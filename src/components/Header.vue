@@ -164,6 +164,12 @@ export default {
   width: 60%;
 }
 
+.nav-link:focus-visible {
+  outline: 2px solid #0066cc;
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
 .mobile-menu {
   background: #fff;
   padding: 40px 30px;

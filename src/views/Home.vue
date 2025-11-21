@@ -622,5 +622,13 @@ export default {
     width: 100%;
     justify-content: center;
   }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .section-subtitle {
+    font-size: 1rem;
+  }
 }
 </style>

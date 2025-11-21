@@ -503,6 +503,11 @@ Additional Notes: ${templateParams.notes}
   cursor: not-allowed;
 }
 
+.btn-submit:focus-visible {
+  outline: 2px solid #0066cc;
+  outline-offset: 2px;
+}
+
 .spinning {
   animation: spin 1s linear infinite;
 }

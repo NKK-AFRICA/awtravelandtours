@@ -17,6 +17,7 @@ export default {
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 80px;
 }
 
 body {
@@ -41,6 +42,16 @@ body {
 a {
   text-decoration: none;
   transition: all 0.3s ease;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #0066cc;
+  outline-offset: 2px;
+  border-radius: 4px;
 }
 
 img {

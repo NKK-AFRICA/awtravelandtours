@@ -15,16 +15,16 @@
               Your trusted partner for unforgettable travel experiences. We specialize in creating memorable journeys tailored to your dreams and desires.
             </p>
             <div class="footer-social">
-              <a href="#" class="social-link" aria-label="Facebook">
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Facebook">
                 <span uk-icon="icon: facebook; ratio: 1.2"></span>
               </a>
-              <a href="#" class="social-link" aria-label="Twitter">
+              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Twitter">
                 <span uk-icon="icon: twitter; ratio: 1.2"></span>
               </a>
-              <a href="#" class="social-link" aria-label="Instagram">
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram">
                 <span uk-icon="icon: instagram; ratio: 1.2"></span>
               </a>
-              <a href="#" class="social-link" aria-label="LinkedIn">
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn">
                 <span uk-icon="icon: linkedin; ratio: 1.2"></span>
               </a>
             </div>
@@ -37,20 +37,20 @@
               <li><router-link to="/about">About Us</router-link></li>
               <li><router-link to="/services">Our Services</router-link></li>
               <li><router-link to="/contact">Contact</router-link></li>
-              <li><a href="#">Travel Packages</a></li>
-              <li><a href="#">Destinations</a></li>
+              <li><a href="/services">Travel Packages</a></li>
+              <li><a href="#flight-booking" @click="scrollToBooking">Book A Flight</a></li>
             </ul>
           </div>
           
           <div class="footer-column">
             <h4 class="footer-title">Services</h4>
             <ul class="footer-links">
-              <li><a href="#">Custom Tours</a></li>
-              <li><a href="#">Group Travel</a></li>
-              <li><a href="#">Adventure Tours</a></li>
-              <li><a href="#">Luxury Travel</a></li>
-              <li><a href="#">Family Vacations</a></li>
-              <li><a href="#">Business Travel</a></li>
+              <li><a href="/services">Custom Tours</a></li>
+              <li><a href="/services">Group Travel</a></li>
+              <li><a href="/services">Adventure Tours</a></li>
+              <li><a href="/services">Luxury Travel</a></li>
+              <li><a href="/services">Family Vacations</a></li>
+              <li><a href="/services">Business Travel</a></li>
             </ul>
           </div>
           
@@ -59,11 +59,11 @@
             <ul class="footer-contact">
               <li>
                 <span uk-icon="icon: receiver; ratio: 1"></span>
-                <span>+1 (555) 123-4567</span>
+                <span><a href="tel:+15551234567">+1 (555) 123-4567</a></span>
               </li>
               <li>
                 <span uk-icon="icon: mail; ratio: 1"></span>
-                <span>info@awtravelandtours.com</span>
+                <span><a href="mailto:info@awtravelandtours.com">info@awtravelandtours.com</a></span>
               </li>
               <li>
                 <span uk-icon="icon: location; ratio: 1"></span>
@@ -84,11 +84,11 @@
         <div class="footer-bottom-content">
           <p>&copy; {{ currentYear }} AW Travel & Tours. All rights reserved.</p>
           <div class="footer-legal">
-            <a href="#">Privacy Policy</a>
+            <router-link to="/contact">Privacy Policy</router-link>
             <span>|</span>
-            <a href="#">Terms of Service</a>
+            <router-link to="/contact">Terms of Service</router-link>
             <span>|</span>
-            <a href="#">Cookie Policy</a>
+            <router-link to="/contact">Cookie Policy</router-link>
           </div>
         </div>
       </div>
@@ -102,6 +102,25 @@ export default {
   computed: {
     currentYear() {
       return new Date().getFullYear()
+    }
+  },
+  methods: {
+    scrollToBooking() {
+      if (this.$route.path === '/') {
+        const bookingSection = document.querySelector('#flight-booking')
+        if (bookingSection) {
+          bookingSection.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        }
+      } else {
+        this.$router.push('/').then(() => {
+          this.$nextTick(() => {
+            const bookingSection = document.querySelector('#flight-booking')
+            if (bookingSection) {
+              bookingSection.scrollIntoView({ behavior: 'smooth', block: 'start' })
+            }
+          })
+        })
+      }
     }
   }
 }
@@ -178,6 +197,11 @@ export default {
   background: #0066cc;
   color: white;
   transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 102, 204, 0.3);
+}
+
+.social-link:active {
+  transform: translateY(0);
 }
 
 .footer-title {
@@ -212,6 +236,11 @@ export default {
   padding-left: 5px;
 }
 
+.footer-links a.router-link-exact-active {
+  color: #0066cc;
+  font-weight: 600;
+}
+
 .footer-contact {
   list-style: none;
   padding: 0;
@@ -234,6 +263,16 @@ export default {
 .footer-contact li > span:last-child {
   line-height: 1.6;
   color: rgba(255, 255, 255, 0.7);
+}
+
+.footer-contact a {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-contact a:hover {
+  color: #0066cc;
 }
 
 .footer-hours {

@@ -2,11 +2,6 @@
   <div class="service-card">
     <div class="service-image-wrapper">
       <img :src="service.image" :alt="service.title" class="service-image">
-      <div class="service-overlay">
-        <router-link to="/services" class="service-link">
-          <span uk-icon="icon: arrow-right; ratio: 1.5"></span>
-        </router-link>
-      </div>
       <div class="service-badge" v-if="service.badge">
         {{ service.badge }}
       </div>
@@ -20,10 +15,6 @@
           {{ feature }}
         </li>
       </ul>
-      <router-link to="/services" class="service-cta">
-        Learn More
-        <span uk-icon="icon: arrow-right; ratio: 0.9"></span>
-      </router-link>
     </div>
   </div>
 </template>
@@ -75,40 +66,6 @@ export default {
   transform: scale(1.1);
 }
 
-.service-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, rgba(0, 102, 204, 0.9) 0%, rgba(0, 68, 153, 0.9) 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.service-card:hover .service-overlay {
-  opacity: 1;
-}
-
-.service-link {
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 60px;
-  height: 60px;
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(10px);
-  border-radius: 50%;
-  transition: transform 0.3s ease;
-}
-
-.service-link:hover {
-  transform: scale(1.1);
-}
 
 .service-badge {
   position: absolute;
@@ -167,21 +124,6 @@ export default {
   flex-shrink: 0;
 }
 
-.service-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  color: #0066cc;
-  font-weight: 600;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  align-self: flex-start;
-}
-
-.service-cta:hover {
-  gap: 12px;
-  color: #004499;
-}
 
 @media (max-width: 640px) {
   .service-image-wrapper {
