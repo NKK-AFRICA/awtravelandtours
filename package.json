@@ -8,15 +8,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
+    "uikit": "^3.24.2",
     "vue": "^3.4.21",
-    "vue-router": "^4.3.0",
-    "uikit": "^3.24.2"
+    "vue-router": "^4.3.0"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.4",
     "vite": "^5.1.6"
   }
 }
-
-
-

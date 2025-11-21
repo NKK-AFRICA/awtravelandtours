@@ -3,6 +3,9 @@
     <Header />
     <Hero />
     
+    <!-- Flight Booking Form -->
+    <FlightBookingForm />
+    
     <!-- Features Section -->
     <section class="features-section">
       <div class="uk-container">
@@ -11,27 +14,33 @@
           <h2 class="section-title">Experience the Difference</h2>
           <p class="section-subtitle">We combine expertise, passion, and dedication to deliver exceptional travel experiences</p>
         </div>
-        <div class="uk-grid-match uk-child-width-1-3@m uk-margin-large-top features-grid" uk-grid>
-          <div class="feature-card" uk-scrollspy="cls: uk-animation-fade; delay: 100">
-            <div class="feature-icon-wrapper">
-              <span uk-icon="icon: heart; ratio: 2"></span>
+        <div class="uk-grid-match uk-child-width-1-3@m uk-margin-large-top uk-grid-medium" uk-grid>
+          <div>
+            <div class="feature-card uk-margin-bottom" uk-scrollspy="cls: uk-animation-fade; delay: 100">
+              <div class="feature-icon-wrapper">
+                <span uk-icon="icon: heart; ratio: 2"></span>
+              </div>
+              <h3>Trusted Service</h3>
+              <p>Years of experience creating unforgettable travel experiences with a commitment to excellence and customer satisfaction.</p>
             </div>
-            <h3>Trusted Service</h3>
-            <p>Years of experience creating unforgettable travel experiences with a commitment to excellence and customer satisfaction.</p>
           </div>
-          <div class="feature-card" uk-scrollspy="cls: uk-animation-fade; delay: 200">
-            <div class="feature-icon-wrapper">
-              <span uk-icon="icon: world; ratio: 2"></span>
+          <div>
+            <div class="feature-card uk-margin-bottom" uk-scrollspy="cls: uk-animation-fade; delay: 200">
+              <div class="feature-icon-wrapper">
+                <span uk-icon="icon: world; ratio: 2"></span>
+              </div>
+              <h3>Global Destinations</h3>
+              <p>Access to exclusive destinations and unique experiences around the world, from hidden gems to iconic landmarks.</p>
             </div>
-            <h3>Global Destinations</h3>
-            <p>Access to exclusive destinations and unique experiences around the world, from hidden gems to iconic landmarks.</p>
           </div>
-          <div class="feature-card" uk-scrollspy="cls: uk-animation-fade; delay: 300">
-            <div class="feature-icon-wrapper">
-              <span uk-icon="icon: credit-card; ratio: 2"></span>
+          <div>
+            <div class="feature-card uk-margin-bottom" uk-scrollspy="cls: uk-animation-fade; delay: 300">
+              <div class="feature-icon-wrapper">
+                <span uk-icon="icon: credit-card; ratio: 2"></span>
+              </div>
+              <h3>Best Value</h3>
+              <p>Competitive pricing without compromising quality. We offer the best value for your travel investment.</p>
             </div>
-            <h3>Best Value</h3>
-            <p>Competitive pricing without compromising quality. We offer the best value for your travel investment.</p>
           </div>
         </div>
       </div>
@@ -156,6 +165,7 @@ import Header from '../components/Header.vue'
 import Footer from '../components/Footer.vue'
 import Hero from '../components/Hero.vue'
 import ServiceCard from '../components/ServiceCard.vue'
+import FlightBookingForm from '../components/FlightBookingForm.vue'
 
 export default {
   name: 'Home',
@@ -163,7 +173,8 @@ export default {
     Header,
     Footer,
     Hero,
-    ServiceCard
+    ServiceCard,
+    FlightBookingForm
   },
   data() {
     return {
@@ -219,16 +230,6 @@ export default {
   background: #fafbfc;
 }
 
-.features-grid {
-  margin-left: -30px !important;
-  margin-right: -30px !important;
-}
-
-.features-grid > * {
-  padding-left: 30px !important;
-  padding-right: 30px !important;
-  padding-bottom: 30px !important;
-}
 
 .section-header {
   text-align: center;

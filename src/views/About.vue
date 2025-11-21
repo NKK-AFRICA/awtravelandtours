@@ -60,34 +60,42 @@
           <h2 class="section-title">What Drives Us</h2>
           <p class="section-subtitle">Core principles that guide everything we do</p>
         </div>
-        <div class="uk-grid-match uk-child-width-1-4@m uk-child-width-1-2@s uk-margin-large-top" uk-grid>
-          <div class="value-card" uk-scrollspy="cls: uk-animation-fade; delay: 100">
-            <div class="value-icon">
-              <span uk-icon="icon: star; ratio: 2"></span>
+        <div class="uk-grid-match uk-child-width-1-4@m uk-margin-large-top uk-grid-medium" uk-grid>
+          <div>
+            <div class="value-card uk-margin-bottom" uk-scrollspy="cls: uk-animation-fade; delay: 100">
+              <div class="value-icon">
+                <span uk-icon="icon: star; ratio: 2"></span>
+              </div>
+              <h3>Excellence</h3>
+              <p>We strive for excellence in every aspect of our service, ensuring every detail is perfect for your journey.</p>
             </div>
-            <h3>Excellence</h3>
-            <p>We strive for excellence in every aspect of our service, ensuring every detail is perfect for your journey.</p>
           </div>
-          <div class="value-card" uk-scrollspy="cls: uk-animation-fade; delay: 200">
-            <div class="value-icon">
-              <span uk-icon="icon: users; ratio: 2"></span>
+          <div>
+            <div class="value-card uk-margin-bottom" uk-scrollspy="cls: uk-animation-fade; delay: 200">
+              <div class="value-icon">
+                <span uk-icon="icon: users; ratio: 2"></span>
+              </div>
+              <h3>Customer Focus</h3>
+              <p>Your satisfaction is our top priority. We listen, understand, and deliver experiences that exceed expectations.</p>
             </div>
-            <h3>Customer Focus</h3>
-            <p>Your satisfaction is our top priority. We listen, understand, and deliver experiences that exceed expectations.</p>
           </div>
-          <div class="value-card" uk-scrollspy="cls: uk-animation-fade; delay: 300">
-            <div class="value-icon">
-              <span uk-icon="icon: lock; ratio: 2"></span>
+          <div>
+            <div class="value-card uk-margin-bottom" uk-scrollspy="cls: uk-animation-fade; delay: 300">
+              <div class="value-icon">
+                <span uk-icon="icon: lock; ratio: 2"></span>
+              </div>
+              <h3>Trust</h3>
+              <p>Building lasting relationships through trust, transparency, and honest communication every step of the way.</p>
             </div>
-            <h3>Trust</h3>
-            <p>Building lasting relationships through trust, transparency, and honest communication every step of the way.</p>
           </div>
-          <div class="value-card" uk-scrollspy="cls: uk-animation-fade; delay: 400">
-            <div class="value-icon">
-              <span uk-icon="icon: bolt; ratio: 2"></span>
+          <div>
+            <div class="value-card uk-margin-bottom" uk-scrollspy="cls: uk-animation-fade; delay: 400">
+              <div class="value-icon">
+                <span uk-icon="icon: bolt; ratio: 2"></span>
+              </div>
+              <h3>Innovation</h3>
+              <p>Continuously improving and adapting to your needs, leveraging the latest in travel technology and trends.</p>
             </div>
-            <h3>Innovation</h3>
-            <p>Continuously improving and adapting to your needs, leveraging the latest in travel technology and trends.</p>
           </div>
         </div>
       </div>
@@ -100,30 +108,36 @@
           <h2 class="section-title">Meet the Experts</h2>
           <p class="section-subtitle">Passionate travel professionals dedicated to making your dreams come true</p>
         </div>
-        <div class="uk-grid-match uk-child-width-1-3@m uk-margin-large-top" uk-grid>
-          <div class="team-card" uk-scrollspy="cls: uk-animation-fade; delay: 100">
-            <div class="team-avatar">
-              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop" alt="Team Member">
+        <div class="uk-grid-match uk-child-width-1-3@m uk-margin-large-top uk-grid-medium" uk-grid>
+          <div>
+            <div class="team-card uk-margin-bottom" uk-scrollspy="cls: uk-animation-fade; delay: 100">
+              <div class="team-avatar">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop" alt="Team Member">
+              </div>
+              <h3>John Smith</h3>
+              <span class="team-role">Founder & CEO</span>
+              <p>With 20 years of travel industry experience, John founded AW Travel & Tours with a vision to make extraordinary travel accessible to everyone.</p>
             </div>
-            <h3>John Smith</h3>
-            <span class="team-role">Founder & CEO</span>
-            <p>With 20 years of travel industry experience, John founded AW Travel & Tours with a vision to make extraordinary travel accessible to everyone.</p>
           </div>
-          <div class="team-card" uk-scrollspy="cls: uk-animation-fade; delay: 200">
-            <div class="team-avatar">
-              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&auto=format&fit=crop" alt="Team Member">
+          <div>
+            <div class="team-card uk-margin-bottom" uk-scrollspy="cls: uk-animation-fade; delay: 200">
+              <div class="team-avatar">
+                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&auto=format&fit=crop" alt="Team Member">
+              </div>
+              <h3>Sarah Johnson</h3>
+              <span class="team-role">Travel Director</span>
+              <p>Sarah specializes in luxury travel and has curated experiences for high-profile clients across 40+ countries worldwide.</p>
             </div>
-            <h3>Sarah Johnson</h3>
-            <span class="team-role">Travel Director</span>
-            <p>Sarah specializes in luxury travel and has curated experiences for high-profile clients across 40+ countries worldwide.</p>
           </div>
-          <div class="team-card" uk-scrollspy="cls: uk-animation-fade; delay: 300">
-            <div class="team-avatar">
-              <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&auto=format&fit=crop" alt="Team Member">
+          <div>
+            <div class="team-card uk-margin-bottom" uk-scrollspy="cls: uk-animation-fade; delay: 300">
+              <div class="team-avatar">
+                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&auto=format&fit=crop" alt="Team Member">
+              </div>
+              <h3>Michael Chen</h3>
+              <span class="team-role">Adventure Specialist</span>
+              <p>Michael is an adventure enthusiast who designs thrilling experiences for travelers seeking adrenaline-pumping activities.</p>
             </div>
-            <h3>Michael Chen</h3>
-            <span class="team-role">Adventure Specialist</span>
-            <p>Michael is an adventure enthusiast who designs thrilling experiences for travelers seeking adrenaline-pumping activities.</p>
           </div>
         </div>
       </div>
@@ -399,6 +413,11 @@ export default {
 .team-section {
   padding: 100px 0;
   background: white;
+}
+
+.team-section [uk-grid] {
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .team-card {

@@ -3,61 +3,28 @@
     <div class="hero-background" :style="{ backgroundImage: 'url(' + heroImage + ')' }"></div>
     <div class="hero-overlay"></div>
     <div class="uk-container uk-position-relative hero-content">
-      <div class="uk-grid-match uk-child-width-1-2@m" uk-grid>
-        <div class="hero-text">
-          <div class="hero-badge" uk-scrollspy="cls: uk-animation-fade; delay: 100">
-            <span uk-icon="icon: star; ratio: 0.8"></span>
-            <span>Trusted by 10,000+ Travelers</span>
-          </div>
-          <h1 class="hero-title" uk-scrollspy="cls: uk-animation-slide-top-small; delay: 200">
-            Discover Your Next
-            <span class="highlight">Adventure</span>
-          </h1>
-          <p class="hero-subtitle" uk-scrollspy="cls: uk-animation-slide-top-small; delay: 300">
-            Experience the world's most stunning destinations with expertly crafted tours. 
-            From exotic beaches to mountain peaks, we make your travel dreams a reality.
-          </p>
-          <div class="hero-cta" uk-scrollspy="cls: uk-animation-slide-top-small; delay: 400">
-            <router-link to="/services" class="btn btn-primary">
-              <span>Explore Destinations</span>
-              <span uk-icon="icon: arrow-right; ratio: 0.9"></span>
-            </router-link>
-            <router-link to="/contact" class="btn btn-outline">
-              <span>Plan Your Trip</span>
-            </router-link>
-          </div>
-          <div class="hero-features" uk-scrollspy="cls: uk-animation-fade; delay: 500">
-            <div class="feature-item">
-              <span uk-icon="icon: check; ratio: 1" class="feature-icon"></span>
-              <span>Best Price Guarantee</span>
-            </div>
-            <div class="feature-item">
-              <span uk-icon="icon: check; ratio: 1" class="feature-icon"></span>
-              <span>24/7 Support</span>
-            </div>
-            <div class="feature-item">
-              <span uk-icon="icon: check; ratio: 1" class="feature-icon"></span>
-              <span>Flexible Booking</span>
-            </div>
-          </div>
+      <div class="hero-content-wrapper">
+        <div class="hero-badge" uk-scrollspy="cls: uk-animation-fade; delay: 100">
+          <span uk-icon="icon: star; ratio: 0.8"></span>
+          <span>Trusted by 10,000+ Travelers</span>
         </div>
-        <div class="hero-stats" uk-scrollspy="cls: uk-animation-fade; delay: 600">
-          <div class="stat-card">
-            <div class="stat-number">50+</div>
-            <div class="stat-label">Destinations</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-number">10K+</div>
-            <div class="stat-label">Happy Travelers</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-number">15+</div>
-            <div class="stat-label">Years Experience</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-number">98%</div>
-            <div class="stat-label">Satisfaction Rate</div>
-          </div>
+        <h1 class="hero-title" uk-scrollspy="cls: uk-animation-slide-top-small; delay: 200">
+          Discover Your Next
+          <span class="highlight">Adventure</span>
+        </h1>
+        <p class="hero-subtitle" uk-scrollspy="cls: uk-animation-slide-top-small; delay: 300">
+          Experience the world's most stunning destinations with expertly crafted tours. 
+          From exotic beaches to mountain peaks, we make your travel dreams a reality.
+        </p>
+        <div class="hero-cta" uk-scrollspy="cls: uk-animation-slide-top-small; delay: 400">
+          <router-link to="/services" class="btn btn-primary">
+            <span>Explore Destinations</span>
+            <span uk-icon="icon: arrow-right; ratio: 0.9"></span>
+          </router-link>
+          <a href="#flight-booking" class="btn btn-flight" @click.prevent="scrollToBooking">
+            <span uk-icon="icon: plane; ratio: 0.9"></span>
+            <span>Book A Flight</span>
+          </a>
         </div>
       </div>
     </div>
@@ -73,6 +40,14 @@ export default {
   data() {
     return {
       heroImage: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=1920&auto=format&fit=crop'
+    }
+  },
+  methods: {
+    scrollToBooking() {
+      const bookingSection = document.querySelector('.flight-booking-section')
+      if (bookingSection) {
+        bookingSection.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }
     }
   }
 }
@@ -113,10 +88,16 @@ export default {
 .hero-content {
   position: relative;
   z-index: 3;
-  padding: 120px 0 80px;
+  padding: 140px 0 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 90vh;
 }
 
-.hero-text {
+.hero-content-wrapper {
+  text-align: center;
+  max-width: 900px;
   color: white;
 }
 
@@ -126,20 +107,22 @@ export default {
   gap: 8px;
   background: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(10px);
-  padding: 8px 16px;
+  padding: 10px 20px;
   border-radius: 50px;
-  font-size: 0.9rem;
-  margin-bottom: 30px;
+  font-size: 0.95rem;
+  margin-bottom: 40px;
   font-weight: 500;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .hero-title {
   font-family: 'Raleway', sans-serif;
-  font-size: 3.5rem;
+  font-size: 4.5rem;
   font-weight: 800;
-  line-height: 1.2;
-  margin-bottom: 24px;
-  letter-spacing: 0.03em;
+  line-height: 1.15;
+  margin-bottom: 30px;
+  letter-spacing: 0.02em;
+  color: white;
 }
 
 .hero-title .highlight {
@@ -147,31 +130,36 @@ export default {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  display: block;
 }
 
 .hero-subtitle {
-  font-size: 1.25rem;
+  font-size: 1.4rem;
   line-height: 1.8;
-  margin-bottom: 40px;
-  color: rgba(255, 255, 255, 0.9);
-  max-width: 540px;
+  margin-bottom: 50px;
+  color: rgba(255, 255, 255, 0.95);
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  font-weight: 400;
 }
 
 .hero-cta {
   display: flex;
-  gap: 16px;
+  gap: 20px;
   flex-wrap: wrap;
-  margin-bottom: 50px;
+  justify-content: center;
+  align-items: center;
 }
 
 .btn {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 16px 32px;
-  border-radius: 8px;
+  gap: 10px;
+  padding: 18px 40px;
+  border-radius: 12px;
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 1.1rem;
   text-decoration: none;
   transition: all 0.3s ease;
   border: 2px solid transparent;
@@ -184,79 +172,39 @@ export default {
 }
 
 .btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 30px rgba(255, 215, 0, 0.5);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(255, 215, 0, 0.5);
   color: #1a1a1a;
 }
 
 .btn-outline {
-  background: transparent;
+  background: rgba(255, 255, 255, 0.1);
   color: white;
-  border: 2px solid rgba(255, 255, 255, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.4);
   backdrop-filter: blur(10px);
 }
 
 .btn-outline:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.6);
   color: white;
+  transform: translateY(-3px);
 }
 
-.hero-features {
-  display: flex;
-  gap: 30px;
-  flex-wrap: wrap;
-}
-
-.feature-item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.95rem;
-  color: rgba(255, 255, 255, 0.9);
-}
-
-.feature-icon {
-  color: #ffd700;
-}
-
-.hero-stats {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-}
-
-.stat-card {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  padding: 30px;
-  border-radius: 16px;
-  text-align: center;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  transition: transform 0.3s ease;
-}
-
-.stat-card:hover {
-  transform: translateY(-5px);
+.btn-flight {
   background: rgba(255, 255, 255, 0.15);
-}
-
-.stat-number {
-  font-size: 2.5rem;
-  font-weight: 800;
   color: white;
-  margin-bottom: 8px;
-  background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
 }
 
-.stat-label {
-  font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.8);
-  text-transform: uppercase;
-  letter-spacing: 1px;
+.btn-flight:hover {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.7);
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(255, 255, 255, 0.2);
 }
 
 .hero-scroll {
@@ -283,44 +231,58 @@ export default {
 }
 
 @media (max-width: 960px) {
+  .hero-content {
+    padding: 100px 0 80px;
+    min-height: 85vh;
+  }
+  
   .hero-title {
-    font-size: 2.5rem;
+    font-size: 3rem;
   }
   
   .hero-subtitle {
-    font-size: 1.1rem;
-  }
-  
-  .hero-stats {
-    grid-template-columns: repeat(2, 1fr);
-    margin-top: 40px;
-  }
-  
-  .stat-number {
-    font-size: 2rem;
+    font-size: 1.2rem;
   }
   
   .hero-cta {
     flex-direction: column;
+    gap: 16px;
   }
   
   .btn {
     width: 100%;
+    max-width: 300px;
     justify-content: center;
   }
 }
 
 @media (max-width: 640px) {
   .hero-section {
-    min-height: 80vh;
+    min-height: 75vh;
+  }
+  
+  .hero-content {
+    padding: 80px 0 60px;
   }
   
   .hero-title {
-    font-size: 2rem;
+    font-size: 2.2rem;
   }
   
-  .hero-stats {
-    grid-template-columns: 1fr;
+  .hero-subtitle {
+    font-size: 1.1rem;
+    margin-bottom: 40px;
+  }
+  
+  .hero-badge {
+    font-size: 0.85rem;
+    padding: 8px 16px;
+    margin-bottom: 30px;
+  }
+  
+  .btn {
+    font-size: 1rem;
+    padding: 16px 32px;
   }
 }
 </style>
