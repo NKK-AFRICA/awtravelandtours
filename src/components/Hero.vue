@@ -233,7 +233,7 @@ export default {
 @media (max-width: 960px) {
   .hero-content {
     padding: 100px 0 80px;
-    min-height: 85vh;
+    min-height: auto;
   }
   
   .hero-title {
@@ -258,11 +258,12 @@ export default {
 
 @media (max-width: 640px) {
   .hero-section {
-    min-height: 75vh;
+    min-height: auto;
+    overflow: visible;
   }
   
   .hero-content {
-    padding: 80px 0 60px;
+    padding: 80px 0 40px;
   }
   
   .hero-title {
