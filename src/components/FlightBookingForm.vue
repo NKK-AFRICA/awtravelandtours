@@ -4,13 +4,26 @@
       <div class="section-header">
         <span class="section-badge">Book Your Flight</span>
         <h2 class="section-title">Find Your Perfect Flight</h2>
-        <p class="section-subtitle">Search and book flights to destinations worldwide</p>
+        <p class="section-subtitle">Request a quotation for flights to destinations worldwide</p>
       </div>
       
       <div class="booking-form-wrapper">
         <form @submit.prevent="submitForm" class="flight-booking-form">
-          <!-- Flight Details Row -->
+          <!-- Trip Type Row -->
           <div class="form-row form-row-compact">
+            <div class="form-group">
+              <label for="tripType">Trip Type *</label>
+              <select 
+                id="tripType" 
+                class="form-select" 
+                v-model="form.tripType" 
+                required
+              >
+                <option value="one-way">One Way</option>
+                <option value="round-trip">Round Trip</option>
+              </select>
+            </div>
+            
             <div class="form-group">
               <label for="from">From *</label>
               <select 
@@ -52,15 +65,19 @@
                 required
               />
             </div>
-            
+          </div>
+          
+          <!-- Return Date Row (only for round trip) -->
+          <div class="form-row form-row-compact" v-if="form.tripType === 'round-trip'">
             <div class="form-group">
-              <label for="returnDate">Return</label>
+              <label for="returnDate">Return Date *</label>
               <input 
                 id="returnDate" 
                 type="date" 
                 class="form-input" 
                 v-model="form.returnDate" 
                 :min="form.departureDate || minDate"
+                required
               />
             </div>
           </div>
@@ -68,20 +85,61 @@
           <!-- Passengers & Class Row -->
           <div class="form-row form-row-compact">
             <div class="form-group">
-              <label for="passengers">Passengers *</label>
+              <label for="adults">Adults (11+) *</label>
               <select 
-                id="passengers" 
+                id="adults" 
                 class="form-select" 
-                v-model="form.passengers" 
+                v-model="form.adults" 
                 required
               >
+                <option value="0">0</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
                 <option value="4">4</option>
                 <option value="5">5</option>
-                <option value="6">6+</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
               </select>
+              <span class="field-note">Full price</span>
+            </div>
+            
+            <div class="form-group">
+              <label for="children">Children (2-11) *</label>
+              <select 
+                id="children" 
+                class="form-select" 
+                v-model="form.children" 
+                required
+              >
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+              </select>
+              <span class="field-note">Seat with discount</span>
+            </div>
+            
+            <div class="form-group">
+              <label for="infants">Infants (0-2) *</label>
+              <select 
+                id="infants" 
+                class="form-select" 
+                v-model="form.infants" 
+                required
+              >
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+              </select>
+              <span class="field-note">No seat</span>
             </div>
             
             <div class="form-group">
@@ -98,15 +156,30 @@
                 <option value="First Class">First Class</option>
               </select>
             </div>
-            
+          </div>
+          
+          <!-- Passenger Information Row -->
+          <div class="form-row form-row-compact">
             <div class="form-group">
-              <label for="name">Name *</label>
+              <label for="firstName">First Name *</label>
               <input 
-                id="name" 
+                id="firstName" 
                 type="text" 
                 class="form-input" 
-                v-model="form.name" 
-                placeholder="Full name"
+                v-model="form.firstName" 
+                placeholder="First name"
+                required
+              />
+            </div>
+            
+            <div class="form-group">
+              <label for="lastName">Last Name *</label>
+              <input 
+                id="lastName" 
+                type="text" 
+                class="form-input" 
+                v-model="form.lastName" 
+                placeholder="Last name"
                 required
               />
             </div>
@@ -133,7 +206,9 @@
                 type="tel" 
                 class="form-input" 
                 v-model="form.phone" 
-                placeholder="+1 (555) 123-4567"
+                @input="formatPhoneNumber"
+                placeholder="+265 9 1234 5678"
+                maxlength="18"
               />
             </div>
             
@@ -155,7 +230,7 @@
               class="btn-submit" 
               :disabled="isSubmitting"
             >
-              <span v-if="!isSubmitting">Search Flights</span>
+              <span v-if="!isSubmitting">Request Quotation</span>
               <span v-else>Sending...</span>
               <span uk-icon="icon: arrow-right; ratio: 0.9" v-if="!isSubmitting"></span>
               <span uk-icon="icon: spinner; ratio: 0.9" v-else class="spinning"></span>
@@ -186,14 +261,19 @@ export default {
     
     return {
       form: {
+        tripType: 'one-way',
         from: '',
         to: '',
         departureDate: '',
         returnDate: '',
-        passengers: '1',
+        adults: '1',
+        children: '0',
+        infants: '0',
         class: 'Economy',
-        name: '',
+        firstName: '',
+        lastName: '',
         email: '',
+        countryCode: '+265',
         phone: '',
         notes: ''
       },
@@ -233,10 +313,32 @@ export default {
       submitMessageType: ''
     }
   },
+  watch: {
+    'form.tripType'(newValue) {
+      if (newValue === 'one-way') {
+        this.form.returnDate = ''
+      }
+    }
+  },
   methods: {
     async submitForm() {
       if (this.form.from === this.form.to) {
         this.showMessage('Departure and destination cannot be the same', 'error')
+        return
+      }
+      
+      if (parseInt(this.form.adults) === 0 && parseInt(this.form.children) === 0 && parseInt(this.form.infants) === 0) {
+        this.showMessage('Please select at least one passenger', 'error')
+        return
+      }
+      
+      if (parseInt(this.form.adults) === 0 && (parseInt(this.form.children) > 0 || parseInt(this.form.infants) > 0)) {
+        this.showMessage('At least one adult (11+) is required when traveling with children or infants', 'error')
+        return
+      }
+      
+      if (this.form.tripType === 'round-trip' && !this.form.returnDate) {
+        this.showMessage('Return date is required for round trip flights', 'error')
         return
       }
       
@@ -251,17 +353,26 @@ export default {
         const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'YOUR_TEMPLATE_ID'
         const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'YOUR_PUBLIC_KEY'
         
+        // Calculate total passengers
+        const totalPassengers = parseInt(this.form.adults) + parseInt(this.form.children) + parseInt(this.form.infants)
+        
         // Prepare email template parameters
         const templateParams = {
+          trip_type: this.form.tripType === 'one-way' ? 'One Way' : 'Round Trip',
           from_city: this.form.from,
           to_city: this.form.to,
           departure_date: this.form.departureDate,
-          return_date: this.form.returnDate || 'One-way',
-          passengers: this.form.passengers,
+          return_date: this.form.tripType === 'round-trip' ? this.form.returnDate : 'N/A (One-way)',
+          adults: this.form.adults,
+          children: this.form.children,
+          infants: this.form.infants,
+          total_passengers: totalPassengers.toString(),
           class: this.form.class,
-          passenger_name: this.form.name,
+          passenger_first_name: this.form.firstName,
+          passenger_last_name: this.form.lastName,
+          passenger_name: `${this.form.firstName} ${this.form.lastName}`,
           passenger_email: this.form.email,
-          passenger_phone: this.form.phone || 'Not provided',
+          passenger_phone: this.getFormattedPhone() || 'Not provided',
           notes: this.form.notes || 'None',
           to_email: 'info@awtravelandtours.com' // Your business email
         }
@@ -274,7 +385,7 @@ export default {
         } else {
           // Send email using EmailJS
           await emailjs.send(serviceId, templateId, templateParams, publicKey)
-          this.showMessage('Flight booking request sent successfully! We\'ll contact you soon with available options.', 'success')
+          this.showMessage('The request for quotation has been sent successfully.', 'success')
           this.resetForm()
         }
       } catch (error) {
@@ -287,19 +398,28 @@ export default {
     
     sendEmailFallback(templateParams) {
       // Create email body
-      const subject = `Flight Booking Request: ${templateParams.from_city} to ${templateParams.to_city}`
+      const subject = `Flight Quotation Request: ${templateParams.from_city} to ${templateParams.to_city}`
       const body = `
-Flight Booking Request Details:
+Flight Quotation Request Details:
 
+Trip Type: ${templateParams.trip_type}
 From: ${templateParams.from_city}
 To: ${templateParams.to_city}
 Departure Date: ${templateParams.departure_date}
 Return Date: ${templateParams.return_date}
-Passengers: ${templateParams.passengers}
+
+Passengers:
+- Adults (11+): ${templateParams.adults} (Full price)
+- Children (2-11): ${templateParams.children} (Seat with discount)
+- Infants (0-2): ${templateParams.infants} (No seat)
+Total Passengers: ${templateParams.total_passengers}
+
 Class: ${templateParams.class}
 
 Passenger Information:
-Name: ${templateParams.passenger_name}
+First Name: ${templateParams.passenger_first_name}
+Last Name: ${templateParams.passenger_last_name}
+Full Name: ${templateParams.passenger_name}
 Email: ${templateParams.passenger_email}
 Phone: ${templateParams.passenger_phone}
 
@@ -312,12 +432,85 @@ Additional Notes: ${templateParams.notes}
       // 2. Use a backend API to send emails
       // 3. Use mailto: link (less ideal)
       
-      this.showMessage('Flight booking request received! We\'ll contact you at ' + templateParams.passenger_email + ' shortly with available flight options.', 'success')
+      this.showMessage('The request for quotation has been sent successfully.', 'success')
       this.resetForm()
       
       // Optional: Uncomment to use mailto fallback
       // const mailtoLink = `mailto:${templateParams.to_email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
       // window.location.href = mailtoLink
+    },
+    
+    formatPhoneNumber(event) {
+      let input = event.target.value
+      // Remove all non-numeric characters except +
+      let cleaned = input.replace(/[^\d+]/g, '')
+      
+      // If it starts with +, handle international format
+      if (cleaned.startsWith('+')) {
+        let digits = cleaned.substring(1)
+        
+        // Handle Malawian numbers: +265 X XXX XXX XXX
+        if (digits.startsWith('265')) {
+          let malawiDigits = digits.substring(3) // Remove country code
+          if (malawiDigits.length === 0) {
+            this.form.phone = '+265'
+          } else if (malawiDigits.length <= 1) {
+            this.form.phone = '+265 ' + malawiDigits
+          } else if (malawiDigits.length <= 4) {
+            this.form.phone = '+265 ' + malawiDigits.substring(0, 1) + ' ' + malawiDigits.substring(1)
+          } else if (malawiDigits.length <= 7) {
+            this.form.phone = '+265 ' + malawiDigits.substring(0, 1) + ' ' + malawiDigits.substring(1, 4) + ' ' + malawiDigits.substring(4)
+          } else {
+            this.form.phone = '+265 ' + malawiDigits.substring(0, 1) + ' ' + malawiDigits.substring(1, 4) + ' ' + malawiDigits.substring(4, 7) + ' ' + malawiDigits.substring(7, 10)
+          }
+        } else if (digits.startsWith('1')) {
+          // Handle US/Canada format: +1 (XXX) XXX-XXXX
+          let usDigits = digits.substring(1)
+          if (usDigits.length === 0) {
+            this.form.phone = '+1'
+          } else if (usDigits.length <= 3) {
+            this.form.phone = '+1 (' + usDigits
+          } else if (usDigits.length <= 6) {
+            this.form.phone = '+1 (' + usDigits.substring(0, 3) + ') ' + usDigits.substring(3)
+          } else {
+            this.form.phone = '+1 (' + usDigits.substring(0, 3) + ') ' + usDigits.substring(3, 6) + '-' + usDigits.substring(6, 10)
+          }
+        } else {
+          // Generic international format: +XXX XXX XXX XXXX
+          if (digits.length === 0) {
+            this.form.phone = '+'
+          } else if (digits.length <= 3) {
+            this.form.phone = '+' + digits
+          } else if (digits.length <= 6) {
+            this.form.phone = '+' + digits.substring(0, 3) + ' ' + digits.substring(3)
+          } else if (digits.length <= 9) {
+            this.form.phone = '+' + digits.substring(0, 3) + ' ' + digits.substring(3, 6) + ' ' + digits.substring(6)
+          } else {
+            this.form.phone = '+' + digits.substring(0, 3) + ' ' + digits.substring(3, 6) + ' ' + digits.substring(6, 9) + ' ' + digits.substring(9, 13)
+          }
+        }
+      } else {
+        // Handle local format (assume Malawian if no country code)
+        // Format: 0X XXX XXX XXX or X XXX XXX XXX
+        let digits = cleaned.replace(/\D/g, '')
+        if (digits.length === 0) {
+          this.form.phone = ''
+        } else if (digits.length <= 1) {
+          this.form.phone = digits
+        } else if (digits.length <= 4) {
+          this.form.phone = digits.substring(0, 1) + ' ' + digits.substring(1)
+        } else if (digits.length <= 7) {
+          this.form.phone = digits.substring(0, 1) + ' ' + digits.substring(1, 4) + ' ' + digits.substring(4)
+        } else {
+          this.form.phone = digits.substring(0, 1) + ' ' + digits.substring(1, 4) + ' ' + digits.substring(4, 7) + ' ' + digits.substring(7, 10)
+        }
+      }
+    },
+    
+    getFormattedPhone() {
+      if (!this.form.phone) return ''
+      // Return the phone number as stored (already formatted)
+      return this.form.phone
     },
     
     showMessage(message, type) {
@@ -330,14 +523,19 @@ Additional Notes: ${templateParams.notes}
     
     resetForm() {
       this.form = {
+        tripType: 'one-way',
         from: '',
         to: '',
         departureDate: '',
         returnDate: '',
-        passengers: '1',
+        adults: '1',
+        children: '0',
+        infants: '0',
         class: 'Economy',
-        name: '',
+        firstName: '',
+        lastName: '',
         email: '',
+        countryCode: '+265',
         phone: '',
         notes: ''
       }
@@ -421,6 +619,15 @@ Additional Notes: ${templateParams.notes}
   font-size: 0.85rem;
   letter-spacing: 0.01em;
 }
+
+.field-note {
+  display: block;
+  font-size: 0.75rem;
+  color: #666;
+  margin-top: 4px;
+  font-style: italic;
+}
+
 
 .form-input,
 .form-select {
