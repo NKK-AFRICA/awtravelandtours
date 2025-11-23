@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
+    "@fortawesome/fontawesome-free": "^7.1.0",
     "uikit": "^3.24.2",
     "vue": "^3.4.21",
     "vue-router": "^4.3.0"

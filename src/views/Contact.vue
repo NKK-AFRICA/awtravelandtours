@@ -7,7 +7,9 @@
       <div class="page-hero-overlay"></div>
       <div class="uk-container page-hero-content">
         <div class="page-hero-text">
-          <span class="page-hero-badge" uk-icon="icon: mail; ratio: 0.8"></span>
+          <span class="page-hero-badge">
+            <i class="fas fa-envelope"></i>
+          </span>
           <h1>Get In Touch</h1>
           <p>Start planning your next adventure with us today</p>
         </div>
@@ -63,7 +65,7 @@
                 </p>
                 <button class="btn-submit" type="submit">
                   <span>Send Message</span>
-                  <span uk-icon="icon: arrow-right; ratio: 0.9"></span>
+                  <i class="fas fa-arrow-right"></i>
                 </button>
               </div>
             </form>
@@ -73,7 +75,7 @@
             <div class="contact-info">
               <div class="info-card">
                 <div class="info-icon">
-                  <span uk-icon="icon: location; ratio: 1.5"></span>
+                  <i class="fas fa-map-marker-alt"></i>
                 </div>
                 <h3>Visit Our Office</h3>
                 <p>123 Travel Street<br>Suite 456<br>Your City, ST 12345<br>Country</p>
@@ -81,7 +83,7 @@
               
               <div class="info-card">
                 <div class="info-icon">
-                  <span uk-icon="icon: receiver; ratio: 1.5"></span>
+                  <i class="fas fa-phone"></i>
                 </div>
                 <h3>Call Us</h3>
                 <p>
@@ -92,7 +94,7 @@
               
               <div class="info-card">
                 <div class="info-icon">
-                  <span uk-icon="icon: mail; ratio: 1.5"></span>
+                  <i class="fas fa-envelope"></i>
                 </div>
                 <h3>Email Us</h3>
                 <p>
@@ -103,7 +105,7 @@
               
               <div class="info-card">
                 <div class="info-icon">
-                  <span uk-icon="icon: clock; ratio: 1.5"></span>
+                  <i class="fas fa-clock"></i>
                 </div>
                 <h3>Business Hours</h3>
                 <p>
@@ -438,6 +440,14 @@ export default {
   justify-content: center;
   color: #0066cc;
   margin-bottom: 20px;
+}
+
+.info-icon i {
+  font-size: 1.5rem;
+}
+
+.page-hero-badge i {
+  font-size: 0.8rem;
 }
 
 .info-card h3 {

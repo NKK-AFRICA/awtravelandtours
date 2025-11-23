@@ -2,225 +2,308 @@
   <section id="flight-booking" class="flight-booking-section">
     <div class="uk-container">
       <div class="section-header">
-        <span class="section-badge">Book Your Flight</span>
-        <h2 class="section-title">Find Your Perfect Flight</h2>
-        <p class="section-subtitle">Request a quotation for flights to destinations worldwide</p>
+        <span class="section-badge">
+          <i class="fas fa-plane"></i>
+          Book Your Flight
+        </span>
+        <h2 class="section-title">Request Your Flight Quotation</h2>
+        <p class="section-subtitle">Fill in the details below and we'll get back to you with the best flight options</p>
       </div>
       
       <div class="booking-form-wrapper">
         <form @submit.prevent="submitForm" class="flight-booking-form">
-          <!-- Trip Type Row -->
-          <div class="form-row form-row-compact">
-            <div class="form-group">
-              <label for="tripType">Trip Type *</label>
-              <select 
-                id="tripType" 
-                class="form-select" 
-                v-model="form.tripType" 
-                required
+          <!-- Trip Type Selection -->
+          <div class="form-section">
+            <h3 class="section-label">Trip Type</h3>
+            <div class="trip-type-selector">
+              <label 
+                class="trip-option" 
+                :class="{ active: form.tripType === 'one-way' }"
+                @click="form.tripType = 'one-way'"
               >
-                <option value="one-way">One Way</option>
-                <option value="round-trip">Round Trip</option>
-              </select>
-            </div>
-            
-            <div class="form-group">
-              <label for="from">From *</label>
-              <select 
-                id="from" 
-                class="form-select" 
-                v-model="form.from" 
-                required
+                <input 
+                  type="radio" 
+                  name="tripType" 
+                  value="one-way" 
+                  v-model="form.tripType"
+                  required
+                />
+                <div class="trip-option-content">
+                  <i class="trip-icon fas fa-arrow-right"></i>
+                  <span class="trip-label">One Way</span>
+                </div>
+              </label>
+              <label 
+                class="trip-option" 
+                :class="{ active: form.tripType === 'round-trip' }"
+                @click="form.tripType = 'round-trip'"
               >
-                <option value="">Select departure</option>
-                <option v-for="city in cities" :key="city.code" :value="city.name">
-                  {{ city.name }} ({{ city.code }})
-                </option>
-              </select>
+                <input 
+                  type="radio" 
+                  name="tripType" 
+                  value="round-trip" 
+                  v-model="form.tripType"
+                />
+                <div class="trip-option-content">
+                  <i class="trip-icon fas fa-sync-alt"></i>
+                  <span class="trip-label">Round Trip</span>
+                </div>
+              </label>
             </div>
-            
-            <div class="form-group">
-              <label for="to">To *</label>
-              <select 
-                id="to" 
-                class="form-select" 
-                v-model="form.to" 
-                required
-              >
-                <option value="">Select destination</option>
-                <option v-for="city in cities" :key="city.code" :value="city.name">
-                  {{ city.name }} ({{ city.code }})
-                </option>
-              </select>
-            </div>
-            
-            <div class="form-group">
-              <label for="departureDate">Departure *</label>
-              <input 
-                id="departureDate" 
-                type="date" 
-                class="form-input" 
-                v-model="form.departureDate" 
-                :min="minDate"
-                required
-              />
+          </div>
+
+          <!-- Flight Details -->
+          <div class="form-section">
+            <h3 class="section-label">Flight Details</h3>
+            <div class="form-row form-row-compact">
+              <div class="form-group">
+                <label for="from">From *</label>
+                <div class="input-wrapper">
+                  <i class="input-icon fas fa-map-marker-alt"></i>
+                  <select 
+                    id="from" 
+                    class="form-select" 
+                    v-model="form.from" 
+                    required
+                  >
+                    <option value="">Select departure city</option>
+                    <option v-for="city in cities" :key="city.code" :value="city.name">
+                      {{ city.name }} ({{ city.code }})
+                    </option>
+                  </select>
+                </div>
+              </div>
+              
+              <div class="form-group">
+                <label for="to">To *</label>
+                <div class="input-wrapper">
+                  <i class="input-icon fas fa-plane"></i>
+                  <select 
+                    id="to" 
+                    class="form-select" 
+                    v-model="form.to" 
+                    required
+                  >
+                    <option value="">Select destination</option>
+                    <option v-for="city in cities" :key="city.code" :value="city.name">
+                      {{ city.name }} ({{ city.code }})
+                    </option>
+                  </select>
+                </div>
+              </div>
+              
+              <div class="form-group">
+                <label for="departureDate">Departure Date *</label>
+                <div class="input-wrapper">
+                  <i class="input-icon fas fa-calendar-alt"></i>
+                  <input 
+                    id="departureDate" 
+                    type="date" 
+                    class="form-input" 
+                    v-model="form.departureDate" 
+                    :min="minDate"
+                    required
+                  />
+                </div>
+              </div>
+              
+              <div class="form-group" v-if="form.tripType === 'round-trip'">
+                <label for="returnDate">Return Date *</label>
+                <div class="input-wrapper">
+                  <i class="input-icon fas fa-calendar-alt"></i>
+                  <input 
+                    id="returnDate" 
+                    type="date" 
+                    class="form-input" 
+                    v-model="form.returnDate" 
+                    :min="form.departureDate || minDate"
+                    required
+                  />
+                </div>
+              </div>
             </div>
           </div>
           
-          <!-- Return Date Row (only for round trip) -->
-          <div class="form-row form-row-compact" v-if="form.tripType === 'round-trip'">
-            <div class="form-group">
-              <label for="returnDate">Return Date *</label>
-              <input 
-                id="returnDate" 
-                type="date" 
-                class="form-input" 
-                v-model="form.returnDate" 
-                :min="form.departureDate || minDate"
-                required
-              />
+          <!-- Passengers & Class -->
+          <div class="form-section">
+            <h3 class="section-label">Passengers & Class</h3>
+            <div class="form-row form-row-compact">
+              <div class="form-group">
+                <label for="adults">
+                  <i class="fas fa-user"></i>
+                  Adults (11+) *
+                </label>
+                <div class="input-wrapper">
+                  <i class="input-icon fas fa-user"></i>
+                  <select 
+                    id="adults" 
+                    class="form-select" 
+                    v-model="form.adults" 
+                    required
+                  >
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                  </select>
+                </div>
+                <span class="field-note">Full price</span>
+              </div>
+              
+              <div class="form-group">
+                <label for="children">
+                  <i class="fas fa-users"></i>
+                  Children (2-11) *
+                </label>
+                <div class="input-wrapper">
+                  <i class="input-icon fas fa-users"></i>
+                  <select 
+                    id="children" 
+                    class="form-select" 
+                    v-model="form.children" 
+                    required
+                  >
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                  </select>
+                </div>
+                <span class="field-note">Seat with discount</span>
+              </div>
+              
+              <div class="form-group">
+                <label for="infants">
+                  <i class="fas fa-baby"></i>
+                  Infants (0-2) *
+                </label>
+                <div class="input-wrapper">
+                  <i class="input-icon fas fa-baby"></i>
+                  <select 
+                    id="infants" 
+                    class="form-select" 
+                    v-model="form.infants" 
+                    required
+                  >
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                  </select>
+                </div>
+                <span class="field-note">No seat</span>
+              </div>
+              
+              <div class="form-group">
+                <label for="class">
+                  <i class="fas fa-couch"></i>
+                  Class *
+                </label>
+                <div class="input-wrapper">
+                  <i class="input-icon fas fa-couch"></i>
+                  <select 
+                    id="class" 
+                    class="form-select" 
+                    v-model="form.class" 
+                    required
+                  >
+                    <option value="Economy">Economy</option>
+                    <option value="Premium Economy">Premium Economy</option>
+                    <option value="Business">Business</option>
+                    <option value="First Class">First Class</option>
+                  </select>
+                </div>
+              </div>
             </div>
           </div>
           
-          <!-- Passengers & Class Row -->
-          <div class="form-row form-row-compact">
-            <div class="form-group">
-              <label for="adults">Adults (11+) *</label>
-              <select 
-                id="adults" 
-                class="form-select" 
-                v-model="form.adults" 
-                required
-              >
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-              </select>
-              <span class="field-note">Full price</span>
-            </div>
-            
-            <div class="form-group">
-              <label for="children">Children (2-11) *</label>
-              <select 
-                id="children" 
-                class="form-select" 
-                v-model="form.children" 
-                required
-              >
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-              </select>
-              <span class="field-note">Seat with discount</span>
-            </div>
-            
-            <div class="form-group">
-              <label for="infants">Infants (0-2) *</label>
-              <select 
-                id="infants" 
-                class="form-select" 
-                v-model="form.infants" 
-                required
-              >
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-              </select>
-              <span class="field-note">No seat</span>
-            </div>
-            
-            <div class="form-group">
-              <label for="class">Class *</label>
-              <select 
-                id="class" 
-                class="form-select" 
-                v-model="form.class" 
-                required
-              >
-                <option value="Economy">Economy</option>
-                <option value="Premium Economy">Premium Economy</option>
-                <option value="Business">Business</option>
-                <option value="First Class">First Class</option>
-              </select>
-            </div>
-          </div>
-          
-          <!-- Passenger Information Row -->
-          <div class="form-row form-row-compact">
-            <div class="form-group">
-              <label for="firstName">First Name *</label>
-              <input 
-                id="firstName" 
-                type="text" 
-                class="form-input" 
-                v-model="form.firstName" 
-                placeholder="First name"
-                required
-              />
-            </div>
-            
-            <div class="form-group">
-              <label for="lastName">Last Name *</label>
-              <input 
-                id="lastName" 
-                type="text" 
-                class="form-input" 
-                v-model="form.lastName" 
-                placeholder="Last name"
-                required
-              />
-            </div>
-            
-            <div class="form-group">
-              <label for="email">Email *</label>
-              <input 
-                id="email" 
-                type="email" 
-                class="form-input" 
-                v-model="form.email" 
-                placeholder="your@email.com"
-                required
-              />
-            </div>
-          </div>
-          
-          <!-- Contact & Notes Row -->
-          <div class="form-row form-row-compact">
-            <div class="form-group">
-              <label for="phone">Phone</label>
-              <input 
-                id="phone" 
-                type="tel" 
-                class="form-input" 
-                v-model="form.phone" 
-                @input="formatPhoneNumber"
-                placeholder="+265 9 1234 5678"
-                maxlength="18"
-              />
+          <!-- Passenger Information -->
+          <div class="form-section">
+            <h3 class="section-label">Passenger Information</h3>
+            <div class="form-row form-row-compact">
+              <div class="form-group">
+                <label for="firstName">First Name *</label>
+                <div class="input-wrapper">
+                  <i class="input-icon fas fa-user"></i>
+                  <input 
+                    id="firstName" 
+                    type="text" 
+                    class="form-input" 
+                    v-model="form.firstName" 
+                    placeholder="Enter first name"
+                    required
+                  />
+                </div>
+              </div>
+              
+              <div class="form-group">
+                <label for="lastName">Last Name *</label>
+                <div class="input-wrapper">
+                  <i class="input-icon fas fa-user"></i>
+                  <input 
+                    id="lastName" 
+                    type="text" 
+                    class="form-input" 
+                    v-model="form.lastName" 
+                    placeholder="Enter last name"
+                    required
+                  />
+                </div>
+              </div>
+              
+              <div class="form-group">
+                <label for="email">Email *</label>
+                <div class="input-wrapper">
+                  <i class="input-icon fas fa-envelope"></i>
+                  <input 
+                    id="email" 
+                    type="email" 
+                    class="form-input" 
+                    v-model="form.email" 
+                    placeholder="your@email.com"
+                    required
+                  />
+                </div>
+              </div>
+              
+              <div class="form-group">
+                <label for="phone">Phone</label>
+                <div class="input-wrapper">
+                  <i class="input-icon fas fa-phone"></i>
+                  <input 
+                    id="phone" 
+                    type="tel" 
+                    class="form-input" 
+                    v-model="form.phone" 
+                    @input="formatPhoneNumber"
+                    placeholder="+265 9 1234 5678"
+                    maxlength="18"
+                  />
+                </div>
+              </div>
             </div>
             
             <div class="form-group form-group-full">
               <label for="notes">Additional Notes (Optional)</label>
-              <textarea 
-                id="notes" 
-                class="form-input form-textarea" 
-                v-model="form.notes" 
-                rows="2"
-                placeholder="Special requests or requirements..."
-              ></textarea>
+              <div class="input-wrapper">
+                <textarea 
+                  id="notes" 
+                  class="form-input form-textarea" 
+                  v-model="form.notes" 
+                  rows="3"
+                  placeholder="Any special requests or requirements..."
+                ></textarea>
+              </div>
             </div>
           </div>
           
@@ -230,19 +313,28 @@
               class="btn-submit" 
               :disabled="isSubmitting"
             >
-              <span v-if="!isSubmitting">Request Quotation</span>
-              <span v-else>Sending...</span>
-              <span uk-icon="icon: arrow-right; ratio: 0.9" v-if="!isSubmitting"></span>
-              <span uk-icon="icon: spinner; ratio: 0.9" v-else class="spinning"></span>
+              <span v-if="!isSubmitting" class="btn-content">
+                Request Quotation
+                <i class="fas fa-arrow-right"></i>
+              </span>
+              <span v-else class="btn-content">
+                <i class="fas fa-spinner fa-spin"></i>
+                Sending...
+              </span>
             </button>
             <p class="privacy-note">
+              <i class="fas fa-info-circle"></i>
               By submitting, you agree to our terms. We'll contact you shortly.
             </p>
           </div>
           
-          <div v-if="submitMessage" :class="['submit-message', submitMessageType]">
-            {{ submitMessage }}
-          </div>
+          <transition name="message">
+            <div v-if="submitMessage" :class="['submit-message', submitMessageType]">
+              <i v-if="submitMessageType === 'success'" class="fas fa-check-circle"></i>
+              <i v-else class="fas fa-times-circle"></i>
+              <span>{{ submitMessage }}</span>
+            </div>
+          </transition>
         </form>
       </div>
     </div>
@@ -546,61 +638,181 @@ Additional Notes: ${templateParams.notes}
 
 <style scoped>
 .flight-booking-section {
-  padding: 80px 0;
-  background: linear-gradient(135deg, #f5f7fa 0%, #e8edf3 100%);
+  padding: 100px 0;
+  background: #f5f7fa;
+  position: relative;
 }
 
 .section-header {
   text-align: center;
-  max-width: 700px;
-  margin: 0 auto 40px;
+  max-width: 800px;
+  margin: 0 auto 60px;
+  position: relative;
 }
 
 .section-badge {
   display: inline-block;
-  background: linear-gradient(135deg, rgba(0, 102, 204, 0.1) 0%, rgba(0, 68, 153, 0.1) 100%);
-  color: #0066cc;
-  padding: 6px 16px;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+  color: #667eea;
+  padding: 10px 24px;
   border-radius: 50px;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   font-weight: 600;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
   letter-spacing: 0.5px;
 }
 
 .section-title {
   font-family: 'Raleway', sans-serif;
-  font-size: 2.2rem;
+  font-size: 3rem;
   font-weight: 800;
   color: #1a1a1a;
-  margin-bottom: 12px;
-  letter-spacing: 0.02em;
+  margin-bottom: 16px;
+  letter-spacing: -0.02em;
 }
 
 .section-subtitle {
-  font-size: 1rem;
+  font-size: 1.1rem;
   color: #666;
-  line-height: 1.6;
+  line-height: 1.7;
+  font-weight: 400;
 }
 
 .booking-form-wrapper {
   max-width: 1200px;
   margin: 0 auto;
+  position: relative;
+  z-index: 1;
 }
 
 .flight-booking-form {
   background: white;
-  padding: 35px;
-  border-radius: 20px;
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.08);
+  padding: 50px;
+  border-radius: 24px;
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(10px);
+}
+
+.form-section {
+  margin-bottom: 40px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.form-section:last-of-type {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.section-label {
+  font-family: 'Raleway', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.section-label::before {
+  content: '';
+  width: 4px;
+  height: 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 2px;
+}
+
+.trip-type-selector {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-bottom: 0;
+}
+
+.trip-option {
+  position: relative;
+  cursor: pointer;
+  border: 2px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 20px;
+  background: white;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+.trip-option::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.trip-option:hover {
+  border-color: #667eea;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.15);
+}
+
+.trip-option.active {
+  border-color: #667eea;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.2);
+}
+
+.trip-option.active::before {
+  opacity: 0.05;
+}
+
+.trip-option input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.trip-option-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  z-index: 1;
+}
+
+.trip-icon {
+  color: #667eea;
+  transition: all 0.3s ease;
+  display: inline-block;
+  font-size: 2rem;
+}
+
+.trip-option.active .trip-icon {
+  color: #667eea;
+  transform: scale(1.1);
+}
+
+.trip-label {
+  font-weight: 600;
+  color: #1a1a1a;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.trip-option.active .trip-label {
+  color: #667eea;
 }
 
 .form-row-compact {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-  margin-bottom: 16px;
+  gap: 20px;
+  margin-bottom: 0;
 }
 
 .form-group {
@@ -608,23 +820,47 @@ Additional Notes: ${templateParams.notes}
 }
 
 .form-group-full {
-  grid-column: span 3;
+  grid-column: span 4;
+  margin-top: 20px;
 }
 
 .form-group label {
   display: block;
   font-weight: 600;
-  color: #1a1a1a;
-  margin-bottom: 6px;
-  font-size: 0.85rem;
+  color: #374151;
+  margin-bottom: 10px;
+  font-size: 0.9rem;
   letter-spacing: 0.01em;
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-icon {
+  position: absolute;
+  left: 16px;
+  z-index: 1;
+  pointer-events: none;
+  color: #9ca3af;
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+}
+
+.form-group label i {
+  margin-right: 6px;
+  vertical-align: middle;
+  font-size: 0.9rem;
 }
 
 .field-note {
   display: block;
   font-size: 0.75rem;
-  color: #666;
-  margin-top: 4px;
+  color: #6b7280;
+  margin-top: 6px;
   font-style: italic;
 }
 
@@ -632,12 +868,12 @@ Additional Notes: ${templateParams.notes}
 .form-input,
 .form-select {
   width: 100%;
-  padding: 12px 16px;
-  border: 2px solid #e0e0e0;
-  border-radius: 10px;
+  padding: 14px 16px 14px 48px;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
   font-size: 0.95rem;
-  transition: all 0.3s ease;
-  background: white;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: #f9fafb;
   color: #1a1a1a;
   font-family: inherit;
 }
@@ -645,77 +881,132 @@ Additional Notes: ${templateParams.notes}
 .form-input:focus,
 .form-select:focus {
   outline: none;
-  border-color: #0066cc;
-  box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+  border-color: #667eea;
+  background: white;
+  box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+  transform: translateY(-1px);
+}
+
+.form-input::placeholder {
+  color: #9ca3af;
 }
 
 .form-select {
   cursor: pointer;
   appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23333' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath fill='%23667eea' d='M8 11L3 6h10z'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 16px center;
-  padding-right: 40px;
+  padding-right: 45px;
+}
+
+.form-group-full .input-wrapper .input-icon {
+  top: 16px;
+  left: 16px;
 }
 
 .form-textarea {
   resize: vertical;
-  min-height: 60px;
+  min-height: 100px;
   font-family: inherit;
+  padding-left: 16px;
+}
+
+.form-group-full .input-wrapper .input-icon {
+  display: none;
+}
+
+.form-group-full .form-textarea {
+  padding-left: 16px;
 }
 
 .form-footer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
-  margin-top: 20px;
-  padding-top: 20px;
-  border-top: 1px solid #e0e0e0;
+  gap: 16px;
+  margin-top: 40px;
+  padding-top: 30px;
+  border-top: 1px solid #f0f0f0;
 }
 
 .privacy-note {
   color: #6b7280;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   margin: 0;
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.privacy-note i {
+  color: #9ca3af;
+  font-size: 0.9rem;
 }
 
 .btn-submit {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  justify-content: center;
+  gap: 12px;
   background: linear-gradient(135deg, #0066cc 0%, #004499 100%);
   color: white;
-  padding: 14px 36px;
+  padding: 16px 48px;
   border: none;
-  border-radius: 10px;
+  border-radius: 12px;
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 1.05rem;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 20px rgba(0, 102, 204, 0.3);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 8px 25px rgba(0, 102, 204, 0.3);
   white-space: nowrap;
   width: 100%;
-  justify-content: center;
+  max-width: 400px;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-submit::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.btn-submit:hover:not(:disabled)::before {
+  left: 100%;
 }
 
 .btn-submit:hover:not(:disabled) {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 30px rgba(0, 102, 204, 0.4);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(0, 102, 204, 0.4);
+}
+
+.btn-submit:active:not(:disabled) {
+  transform: translateY(-1px);
 }
 
 .btn-submit:disabled {
-  opacity: 0.7;
+  opacity: 0.6;
   cursor: not-allowed;
+  transform: none;
 }
 
-.btn-submit:focus-visible {
-  outline: 2px solid #0066cc;
-  outline-offset: 2px;
+.btn-content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  z-index: 1;
 }
 
-.spinning {
+.spinner {
   animation: spin 1s linear infinite;
 }
 
@@ -729,23 +1020,55 @@ Additional Notes: ${templateParams.notes}
 }
 
 .submit-message {
-  margin-top: 20px;
-  padding: 16px 20px;
+  margin-top: 24px;
+  padding: 18px 24px;
   border-radius: 12px;
   font-weight: 500;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  animation: slideDown 0.3s ease;
+}
+
+.submit-message i {
+  flex-shrink: 0;
+  font-size: 1.2rem;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .submit-message.success {
-  background: #d1fae5;
+  background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
   color: #065f46;
-  border: 1px solid #6ee7b7;
+  border: 2px solid #6ee7b7;
 }
 
 .submit-message.error {
-  background: #fee2e2;
+  background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
   color: #991b1b;
-  border: 1px solid #fca5a5;
+  border: 2px solid #fca5a5;
+}
+
+.message-enter-active,
+.message-leave-active {
+  transition: all 0.3s ease;
+}
+
+.message-enter-from,
+.message-leave-to {
+  opacity: 0;
+  transform: translateY(-10px);
 }
 
 @media (max-width: 1200px) {
@@ -759,41 +1082,83 @@ Additional Notes: ${templateParams.notes}
 }
 
 @media (max-width: 960px) {
+  .flight-booking-section {
+    padding: 60px 0;
+  }
+  
   .section-title {
-    font-size: 1.8rem;
+    font-size: 2.2rem;
+  }
+  
+  .section-subtitle {
+    font-size: 1rem;
   }
   
   .flight-booking-form {
-    padding: 30px;
+    padding: 35px;
+    border-radius: 20px;
   }
   
   .form-row-compact {
     grid-template-columns: 1fr;
-    gap: 14px;
+    gap: 16px;
   }
   
   .form-group-full {
     grid-column: span 1;
   }
+  
+  .trip-type-selector {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 640px) {
   .flight-booking-section {
-    padding: 60px 0;
+    padding: 40px 0;
+  }
+  
+  .section-header {
+    margin-bottom: 40px;
+  }
+  
+  .section-badge {
+    padding: 8px 20px;
+    font-size: 0.85rem;
+  }
+  
+  .section-title {
+    font-size: 1.8rem;
+  }
+  
+  .section-subtitle {
+    font-size: 0.95rem;
   }
   
   .flight-booking-form {
     padding: 24px;
+    border-radius: 16px;
   }
   
-  .section-title {
-    font-size: 1.6rem;
+  .form-section {
+    margin-bottom: 30px;
+    padding-bottom: 24px;
   }
   
   .form-input,
   .form-select {
-    padding: 10px 14px;
+    padding: 12px 14px 12px 44px;
     font-size: 0.9rem;
+  }
+  
+  .input-icon {
+    left: 14px;
+    font-size: 1rem;
+  }
+  
+  .btn-submit {
+    padding: 14px 32px;
+    font-size: 1rem;
   }
 }
 </style>

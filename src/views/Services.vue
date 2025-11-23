@@ -7,7 +7,9 @@
       <div class="page-hero-overlay"></div>
       <div class="uk-container page-hero-content">
         <div class="page-hero-text">
-          <span class="page-hero-badge" uk-icon="icon: world; ratio: 0.8"></span>
+          <span class="page-hero-badge">
+            <i class="fas fa-globe"></i>
+          </span>
           <h1>Our Services</h1>
           <p>Comprehensive travel solutions tailored to your unique needs and preferences</p>
         </div>
@@ -40,42 +42,42 @@
             <p class="features-description">Beyond our core services, we offer comprehensive travel support to ensure every aspect of your journey is seamless and stress-free.</p>
             <ul class="features-list">
               <li>
-                <span uk-icon="icon: check; ratio: 1.2" class="check-icon"></span>
+                <i class="fas fa-check check-icon"></i>
                 <div>
                   <strong>Visa Assistance</strong>
                   <p>Expert guidance and documentation support for all visa requirements</p>
                 </div>
               </li>
               <li>
-                <span uk-icon="icon: check; ratio: 1.2" class="check-icon"></span>
+                <i class="fas fa-check check-icon"></i>
                 <div>
                   <strong>Travel Insurance</strong>
                   <p>Comprehensive coverage options to protect your journey</p>
                 </div>
               </li>
               <li>
-                <span uk-icon="icon: check; ratio: 1.2" class="check-icon"></span>
+                <i class="fas fa-check check-icon"></i>
                 <div>
                   <strong>Airport Transfers</strong>
                   <p>Reliable transportation services for a smooth start to your trip</p>
                 </div>
               </li>
               <li>
-                <span uk-icon="icon: check; ratio: 1.2" class="check-icon"></span>
+                <i class="fas fa-check check-icon"></i>
                 <div>
                   <strong>Hotel Bookings</strong>
                   <p>Access to the best accommodations worldwide at competitive rates</p>
                 </div>
               </li>
               <li>
-                <span uk-icon="icon: check; ratio: 1.2" class="check-icon"></span>
+                <i class="fas fa-check check-icon"></i>
                 <div>
                   <strong>Flight Reservations</strong>
                   <p>Expert booking and management of all your air travel needs</p>
                 </div>
               </li>
               <li>
-                <span uk-icon="icon: check; ratio: 1.2" class="check-icon"></span>
+                <i class="fas fa-check check-icon"></i>
                 <div>
                   <strong>24/7 Support</strong>
                   <p>Round-the-clock assistance during your entire travel experience</p>
@@ -85,7 +87,7 @@
           </div>
           <div class="features-card">
             <div class="features-card-content">
-              <span uk-icon="icon: star; ratio: 3" class="card-icon"></span>
+              <i class="fas fa-star card-icon"></i>
               <h3>Why Book With Us</h3>
               <p>Our experienced travel consultants work closely with you to understand your preferences and create the perfect itinerary. We maintain strong relationships with hotels, airlines, and local tour operators worldwide, ensuring you get the best rates and exclusive access to special experiences.</p>
               <p>From the initial planning stage to your safe return home, we're with you every step of the way. Our commitment to excellence has earned us the trust of thousands of satisfied travelers.</p>
@@ -105,7 +107,7 @@
               </div>
               <router-link to="/contact" class="btn-primary">
                 Get Started Today
-                <span uk-icon="icon: arrow-right; ratio: 0.9"></span>
+                <i class="fas fa-arrow-right"></i>
               </router-link>
             </div>
           </div>
@@ -355,6 +357,15 @@ export default {
   color: #0066cc;
   flex-shrink: 0;
   margin-top: 4px;
+  font-size: 1.2rem;
+}
+
+.card-icon {
+  font-size: 3rem;
+}
+
+.page-hero-badge i {
+  font-size: 0.8rem;
 }
 
 .features-list li strong {

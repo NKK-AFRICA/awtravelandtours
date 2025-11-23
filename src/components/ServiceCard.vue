@@ -11,7 +11,7 @@
       <p class="service-description">{{ service.description }}</p>
       <ul class="service-features" v-if="service.features">
         <li v-for="(feature, index) in service.features.slice(0, 3)" :key="index">
-          <span uk-icon="icon: check; ratio: 0.8"></span>
+          <i class="fas fa-check"></i>
           {{ feature }}
         </li>
       </ul>
@@ -119,9 +119,10 @@ export default {
   font-size: 0.95rem;
 }
 
-.service-features li span {
+.service-features li i {
   color: #0066cc;
   flex-shrink: 0;
+  font-size: 0.8rem;
 }
 
 

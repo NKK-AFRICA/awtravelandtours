@@ -18,7 +18,7 @@
           <div>
             <div class="feature-card uk-margin-bottom" uk-scrollspy="cls: uk-animation-fade; delay: 100">
               <div class="feature-icon-wrapper">
-                <span uk-icon="icon: heart; ratio: 2"></span>
+                <i class="fas fa-heart"></i>
               </div>
               <h3>Trusted Service</h3>
               <p>Years of experience creating unforgettable travel experiences with a commitment to excellence and customer satisfaction.</p>
@@ -27,7 +27,7 @@
           <div>
             <div class="feature-card uk-margin-bottom" uk-scrollspy="cls: uk-animation-fade; delay: 200">
               <div class="feature-icon-wrapper">
-                <span uk-icon="icon: world; ratio: 2"></span>
+                <i class="fas fa-globe"></i>
               </div>
               <h3>Global Destinations</h3>
               <p>Access to exclusive destinations and unique experiences around the world, from hidden gems to iconic landmarks.</p>
@@ -36,7 +36,7 @@
           <div>
             <div class="feature-card uk-margin-bottom" uk-scrollspy="cls: uk-animation-fade; delay: 300">
               <div class="feature-icon-wrapper">
-                <span uk-icon="icon: credit-card; ratio: 2"></span>
+                <i class="fas fa-credit-card"></i>
               </div>
               <h3>Best Value</h3>
               <p>Competitive pricing without compromising quality. We offer the best value for your travel investment.</p>
@@ -64,7 +64,7 @@
         <div class="section-cta">
           <router-link to="/services" class="btn-primary-large">
             <span>Explore All Services</span>
-            <span uk-icon="icon: arrow-right; ratio: 1"></span>
+            <i class="fas fa-arrow-right"></i>
           </router-link>
         </div>
       </div>
@@ -78,28 +78,28 @@
             <div class="stat-number">50+</div>
             <div class="stat-label">Destinations</div>
             <div class="stat-icon">
-              <span uk-icon="icon: location; ratio: 1.5"></span>
+              <i class="fas fa-map-marker-alt"></i>
             </div>
           </div>
           <div class="stat-item" uk-scrollspy="cls: uk-animation-scale-up; delay: 200">
             <div class="stat-number">10K+</div>
             <div class="stat-label">Happy Travelers</div>
             <div class="stat-icon">
-              <span uk-icon="icon: happy; ratio: 1.5"></span>
+              <i class="fas fa-smile"></i>
             </div>
           </div>
           <div class="stat-item" uk-scrollspy="cls: uk-animation-scale-up; delay: 300">
             <div class="stat-number">15+</div>
             <div class="stat-label">Years Experience</div>
             <div class="stat-icon">
-              <span uk-icon="icon: calendar; ratio: 1.5"></span>
+              <i class="fas fa-calendar-alt"></i>
             </div>
           </div>
           <div class="stat-item" uk-scrollspy="cls: uk-animation-scale-up; delay: 400">
             <div class="stat-number">98%</div>
             <div class="stat-label">Satisfaction Rate</div>
             <div class="stat-icon">
-              <span uk-icon="icon: star; ratio: 1.5"></span>
+              <i class="fas fa-star"></i>
             </div>
           </div>
         </div>
@@ -117,7 +117,7 @@
         <div class="testimonials-grid">
           <div v-for="(testimonial, index) in testimonials" :key="index" class="testimonial-card" uk-scrollspy="cls: uk-animation-fade; delay: 100">
             <div class="testimonial-quote">
-              <span uk-icon="icon: quote; ratio: 2"></span>
+              <i class="fas fa-quote-right"></i>
             </div>
             <p class="testimonial-text">"{{ testimonial.text }}"</p>
             <div class="testimonial-author">
@@ -130,7 +130,7 @@
               </div>
             </div>
             <div class="testimonial-rating">
-              <span uk-icon="icon: star; ratio: 0.8" v-for="n in 5" :key="n"></span>
+              <i class="fas fa-star" v-for="n in 5" :key="n"></i>
             </div>
           </div>
         </div>
@@ -146,7 +146,7 @@
           <div class="cta-buttons">
             <router-link to="/services" class="btn-white">
               <span>Browse Packages</span>
-              <span uk-icon="icon: arrow-right; ratio: 1"></span>
+              <i class="fas fa-arrow-right"></i>
             </router-link>
             <router-link to="/contact" class="btn-outline-white">
               Get Free Quote

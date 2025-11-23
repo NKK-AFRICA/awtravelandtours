@@ -5,7 +5,7 @@
     <div class="uk-container uk-position-relative hero-content">
       <div class="hero-content-wrapper">
         <div class="hero-badge" uk-scrollspy="cls: uk-animation-fade; delay: 100">
-          <span uk-icon="icon: star; ratio: 0.8"></span>
+          <i class="fas fa-star"></i>
           <span>Trusted by 10,000+ Travelers</span>
         </div>
         <h1 class="hero-title" uk-scrollspy="cls: uk-animation-slide-top-small; delay: 200">
@@ -17,19 +17,23 @@
           From exotic beaches to mountain peaks, we make your travel dreams a reality.
         </p>
         <div class="hero-cta" uk-scrollspy="cls: uk-animation-slide-top-small; delay: 400">
-          <router-link to="/services" class="btn btn-primary">
+          <router-link to="/services" class="btn btn-secondary">
+            <i class="fas fa-globe"></i>
             <span>Explore Destinations</span>
-            <span uk-icon="icon: arrow-right; ratio: 0.9"></span>
           </router-link>
-          <a href="#flight-booking" class="btn btn-flight" @click.prevent="scrollToBooking">
-            <span uk-icon="icon: plane; ratio: 0.9"></span>
-            <span>Book A Flight</span>
+          <a href="#flight-booking" class="btn btn-primary" @click.prevent="scrollToBooking">
+            <i class="fas fa-plane"></i>
+            <span>Book Your Flight</span>
           </a>
+          <router-link to="/contact" class="btn btn-secondary">
+            <i class="fas fa-file-invoice"></i>
+            <span>Visa & Travel Insurance</span>
+          </router-link>
         </div>
       </div>
     </div>
     <div class="hero-scroll">
-      <span uk-icon="icon: chevron-down; ratio: 1.5"></span>
+      <i class="fas fa-chevron-down"></i>
     </div>
   </section>
 </template>
@@ -44,7 +48,7 @@ export default {
   },
   methods: {
     scrollToBooking() {
-      const bookingSection = document.querySelector('.flight-booking-section')
+      const bookingSection = document.querySelector('#flight-booking')
       if (bookingSection) {
         bookingSection.scrollIntoView({ behavior: 'smooth', block: 'start' })
       }
@@ -115,6 +119,10 @@ export default {
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
+.hero-badge i {
+  font-size: 0.9rem;
+}
+
 .hero-title {
   font-family: 'Raleway', sans-serif;
   font-size: 4.5rem;
@@ -165,6 +173,10 @@ export default {
   border: 2px solid transparent;
 }
 
+.btn i {
+  font-size: 1rem;
+}
+
 .btn-primary {
   background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
   color: #1a1a1a;
@@ -191,7 +203,7 @@ export default {
   transform: translateY(-3px);
 }
 
-.btn-flight {
+.btn-secondary {
   background: rgba(255, 255, 255, 0.15);
   color: white;
   border: 2px solid rgba(255, 255, 255, 0.5);
@@ -199,12 +211,13 @@ export default {
   box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
 }
 
-.btn-flight:hover {
+.btn-secondary:hover {
   background: rgba(255, 255, 255, 0.25);
   border-color: rgba(255, 255, 255, 0.7);
   color: white;
   transform: translateY(-3px);
   box-shadow: 0 8px 30px rgba(255, 255, 255, 0.2);
+  text-decoration: none;
 }
 
 .hero-scroll {
@@ -216,6 +229,7 @@ export default {
   z-index: 3;
   animation: bounce 2s infinite;
   opacity: 0.7;
+  font-size: 1.5rem;
 }
 
 @keyframes bounce {

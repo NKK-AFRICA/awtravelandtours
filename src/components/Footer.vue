@@ -5,7 +5,7 @@
         <div class="uk-grid-match uk-child-width-1-4@m uk-child-width-1-2@s" uk-grid>
           <div class="footer-column">
             <div class="footer-logo">
-              <span uk-icon="icon: world; ratio: 2"></span>
+              <i class="fas fa-globe"></i>
               <div class="footer-logo-text">
                 <strong>AW Travel</strong>
                 <span>& Tours</span>
@@ -16,16 +16,16 @@
             </p>
             <div class="footer-social">
               <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Facebook">
-                <span uk-icon="icon: facebook; ratio: 1.2"></span>
+                <i class="fab fa-facebook-f"></i>
               </a>
               <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Twitter">
-                <span uk-icon="icon: twitter; ratio: 1.2"></span>
+                <i class="fab fa-twitter"></i>
               </a>
               <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram">
-                <span uk-icon="icon: instagram; ratio: 1.2"></span>
+                <i class="fab fa-instagram"></i>
               </a>
               <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn">
-                <span uk-icon="icon: linkedin; ratio: 1.2"></span>
+                <i class="fab fa-linkedin-in"></i>
               </a>
             </div>
           </div>
@@ -58,15 +58,15 @@
             <h4 class="footer-title">Contact Info</h4>
             <ul class="footer-contact">
               <li>
-                <span uk-icon="icon: receiver; ratio: 1"></span>
+                <i class="fas fa-phone"></i>
                 <span><a href="tel:+15551234567">+1 (555) 123-4567</a></span>
               </li>
               <li>
-                <span uk-icon="icon: mail; ratio: 1"></span>
+                <i class="fas fa-envelope"></i>
                 <span><a href="mailto:info@awtravelandtours.com">info@awtravelandtours.com</a></span>
               </li>
               <li>
-                <span uk-icon="icon: location; ratio: 1"></span>
+                <i class="fas fa-map-marker-alt"></i>
                 <span>123 Travel Street<br>Suite 456, Your City<br>Country 12345</span>
               </li>
             </ul>
@@ -148,8 +148,9 @@ export default {
   color: white;
 }
 
-.footer-logo span[uk-icon] {
+.footer-logo i {
   color: #0066cc;
+  font-size: 2rem;
 }
 
 .footer-logo-text {
@@ -191,6 +192,10 @@ export default {
   color: rgba(255, 255, 255, 0.7);
   transition: all 0.3s ease;
   text-decoration: none;
+}
+
+.social-link i {
+  font-size: 1.2rem;
 }
 
 .social-link:hover {
@@ -254,10 +259,11 @@ export default {
   align-items: flex-start;
 }
 
-.footer-contact li span[uk-icon] {
+.footer-contact li i {
   color: #0066cc;
   flex-shrink: 0;
   margin-top: 4px;
+  font-size: 1rem;
 }
 
 .footer-contact li > span:last-child {

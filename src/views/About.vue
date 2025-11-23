@@ -7,7 +7,9 @@
       <div class="page-hero-overlay"></div>
       <div class="uk-container page-hero-content">
         <div class="page-hero-text">
-          <span class="page-hero-badge" uk-icon="icon: info; ratio: 0.8"></span>
+          <span class="page-hero-badge">
+            <i class="fas fa-info-circle"></i>
+          </span>
           <h1>About AW Travel & Tours</h1>
           <p>Your trusted partner in creating unforgettable travel experiences</p>
         </div>
@@ -42,7 +44,7 @@
                  alt="About Us" 
                  class="uk-border-rounded">
             <div class="image-badge">
-              <span uk-icon="icon: star; ratio: 1.5"></span>
+              <i class="fas fa-star"></i>
               <div>
                 <strong>15+ Years</strong>
                 <span>Of Excellence</span>
@@ -64,7 +66,7 @@
           <div>
             <div class="value-card uk-margin-bottom" uk-scrollspy="cls: uk-animation-fade; delay: 100">
               <div class="value-icon">
-                <span uk-icon="icon: star; ratio: 2"></span>
+                <i class="fas fa-star"></i>
               </div>
               <h3>Excellence</h3>
               <p>We strive for excellence in every aspect of our service, ensuring every detail is perfect for your journey.</p>
@@ -73,7 +75,7 @@
           <div>
             <div class="value-card uk-margin-bottom" uk-scrollspy="cls: uk-animation-fade; delay: 200">
               <div class="value-icon">
-                <span uk-icon="icon: users; ratio: 2"></span>
+                <i class="fas fa-users"></i>
               </div>
               <h3>Customer Focus</h3>
               <p>Your satisfaction is our top priority. We listen, understand, and deliver experiences that exceed expectations.</p>
@@ -82,7 +84,7 @@
           <div>
             <div class="value-card uk-margin-bottom" uk-scrollspy="cls: uk-animation-fade; delay: 300">
               <div class="value-icon">
-                <span uk-icon="icon: lock; ratio: 2"></span>
+                <i class="fas fa-lock"></i>
               </div>
               <h3>Trust</h3>
               <p>Building lasting relationships through trust, transparency, and honest communication every step of the way.</p>
@@ -91,7 +93,7 @@
           <div>
             <div class="value-card uk-margin-bottom" uk-scrollspy="cls: uk-animation-fade; delay: 400">
               <div class="value-icon">
-                <span uk-icon="icon: bolt; ratio: 2"></span>
+                <i class="fas fa-bolt"></i>
               </div>
               <h3>Innovation</h3>
               <p>Continuously improving and adapting to your needs, leveraging the latest in travel technology and trends.</p>
@@ -326,8 +328,17 @@ export default {
   gap: 15px;
 }
 
-.image-badge span[uk-icon] {
+.image-badge i {
   color: #ffd700;
+  font-size: 1.5rem;
+}
+
+.value-icon i {
+  font-size: 2rem;
+}
+
+.page-hero-badge i {
+  font-size: 0.8rem;
 }
 
 .image-badge strong {

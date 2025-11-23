@@ -5,7 +5,7 @@
         <div class="uk-navbar-left">
           <router-link class="uk-navbar-item logo-wrapper" to="/">
             <div class="logo">
-              <span class="logo-icon" uk-icon="icon: world; ratio: 1.5"></span>
+              <i class="logo-icon fas fa-globe"></i>
               <div class="logo-text">
                 <strong class="logo-name">AW Travel</strong>
                 <span class="logo-tagline">& Tours</span>
@@ -41,7 +41,7 @@
     <div class="uk-offcanvas-bar mobile-menu">
       <button class="uk-offcanvas-close" type="button" uk-close></button>
       <div class="mobile-logo">
-        <span uk-icon="icon: world; ratio: 2"></span>
+        <i class="fas fa-globe"></i>
         <strong>AW Travel & Tours</strong>
       </div>
       <ul class="uk-nav uk-nav-default uk-nav-parent-icon">
@@ -109,6 +109,11 @@ export default {
   color: #0066cc;
   display: flex;
   align-items: center;
+  font-size: 1.5rem;
+}
+
+.mobile-logo i {
+  font-size: 2rem;
 }
 
 .logo-text {
@@ -197,9 +202,4 @@ export default {
   font-weight: 600;
 }
 
-@media (max-width: 960px) {
-  .uk-navbar-right {
-    margin-left: auto;
-  }
-}
 </style>
