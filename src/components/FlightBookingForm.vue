@@ -720,7 +720,7 @@ Additional Notes: ${templateParams.notes}
   content: '';
   width: 4px;
   height: 20px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #0066cc 0%, #004499 100%);
   border-radius: 2px;
 }
 
