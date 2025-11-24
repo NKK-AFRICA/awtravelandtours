@@ -67,7 +67,7 @@
               </li>
               <li>
                 <i class="fas fa-map-marker-alt"></i>
-                <span>123 Travel Street<br>Suite 456, Your City<br>Country 12345</span>
+                <span>Corporate Mall<br>2nd Floor<br>Area 4<br>Chilambula Road, Lilongwe</span>
               </li>
             </ul>
             <div class="footer-hours">
