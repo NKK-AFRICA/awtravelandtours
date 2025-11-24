@@ -59,7 +59,7 @@
             <ul class="footer-contact">
               <li>
                 <i class="fas fa-phone"></i>
-                <span><a href="tel:+15551234567">+1 (555) 123-4567</a></span>
+                <span><a href="tel:+265888946589">+265-888-946-589</a></span>
               </li>
               <li>
                 <i class="fas fa-envelope"></i>

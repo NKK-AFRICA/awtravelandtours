@@ -78,7 +78,7 @@
                   <i class="fas fa-map-marker-alt"></i>
                 </div>
                 <h3>Visit Our Office</h3>
-                <p>123 Travel Street<br>Suite 456<br>Your City, ST 12345<br>Country</p>
+                <p>Corporate Mall<br>2nd Floor<br>Area 4<br>Chilambula Road, Lilongwe</p>
               </div>
               
               <div class="info-card">
@@ -87,8 +87,8 @@
                 </div>
                 <h3>Call Us</h3>
                 <p>
-                  <a href="tel:+15551234567">+1 (555) 123-4567</a><br>
-                  <a href="tel:+15551234568">+1 (555) 123-4568</a>
+                  <a href="tel:+265888946589">+265-888-946-589</a><br>
+                  <a href="tel:+265999945589">+265-999-945-589</a>
                 </p>
               </div>
               
@@ -99,21 +99,9 @@
                 <h3>Email Us</h3>
                 <p>
                   <a href="mailto:info@awtravelandtours.com">info@awtravelandtours.com</a><br>
-                  <a href="mailto:support@awtravelandtours.com">support@awtravelandtours.com</a>
                 </p>
               </div>
               
-              <div class="info-card">
-                <div class="info-icon">
-                  <i class="fas fa-clock"></i>
-                </div>
-                <h3>Business Hours</h3>
-                <p>
-                  Monday - Friday: 9:00 AM - 6:00 PM<br>
-                  Saturday: 10:00 AM - 4:00 PM<br>
-                  Sunday: Closed
-                </p>
-              </div>
             </div>
           </div>
         </div>

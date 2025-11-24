@@ -89,7 +89,7 @@
             </div>
           </div>
           <div class="stat-item" uk-scrollspy="cls: uk-animation-scale-up; delay: 300">
-            <div class="stat-number">15+</div>
+            <div class="stat-number">20+</div>
             <div class="stat-label">Years Experience</div>
             <div class="stat-icon">
               <i class="fas fa-calendar-alt"></i>

@@ -26,7 +26,7 @@
             <p>Our team of travel experts is dedicated to crafting personalized itineraries that match your interests, budget, and travel style. Whether you're seeking adventure, relaxation, cultural immersion, or a combination of all three, we're here to make it happen.</p>
             <div class="about-stats">
               <div class="about-stat">
-                <div class="about-stat-number">15+</div>
+                <div class="about-stat-number">20+</div>
                 <div class="about-stat-label">Years Experience</div>
               </div>
               <div class="about-stat">
@@ -40,7 +40,7 @@
             </div>
           </div>
           <div class="about-image">
-            <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&auto=format&fit=crop" 
+            <img src="/image/9e25994a234e2.jpeg" 
                  alt="About Us" 
                  class="uk-border-rounded">
             <div class="image-badge">
@@ -114,19 +114,19 @@
           <div>
             <div class="team-card uk-margin-bottom" uk-scrollspy="cls: uk-animation-fade; delay: 100">
               <div class="team-avatar">
-                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop" alt="Team Member">
+                <img src="/image/289c72de3647d1.jpeg" alt="Team Member">
               </div>
-              <h3>John Smith</h3>
-              <span class="team-role">Founder & CEO</span>
+              <h3>Daniel Kaliati</h3>
+              <span class="team-role">Mananging Director</span>
               <p>With 20 years of travel industry experience, John founded AW Travel & Tours with a vision to make extraordinary travel accessible to everyone.</p>
             </div>
           </div>
           <div>
             <div class="team-card uk-margin-bottom" uk-scrollspy="cls: uk-animation-fade; delay: 200">
               <div class="team-avatar">
-                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&auto=format&fit=crop" alt="Team Member">
+                <img src="https://cdn.pixabay.com/photo/2018/04/18/18/56/user-3331257_1280.png" alt="Team Member">
               </div>
-              <h3>Sarah Johnson</h3>
+              <h3>Christina Mangwanya</h3>
               <span class="team-role">Travel Director</span>
               <p>Sarah specializes in luxury travel and has curated experiences for high-profile clients across 40+ countries worldwide.</p>
             </div>
@@ -134,7 +134,7 @@
           <div>
             <div class="team-card uk-margin-bottom" uk-scrollspy="cls: uk-animation-fade; delay: 300">
               <div class="team-avatar">
-                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&auto=format&fit=crop" alt="Team Member">
+                <img src="https://cdn.pixabay.com/photo/2018/04/18/18/56/user-3331257_1280.png" alt="Team Member">
               </div>
               <h3>Michael Chen</h3>
               <span class="team-role">Adventure Specialist</span>
