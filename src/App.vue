@@ -1,12 +1,18 @@
 <template>
   <div id="app">
     <router-view />
+    <WhatsAppChat />
   </div>
 </template>
 
 <script>
+import WhatsAppChat from './components/WhatsAppChat.vue'
+
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    WhatsAppChat
+  }
 }
 </script>
 

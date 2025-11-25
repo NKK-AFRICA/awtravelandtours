@@ -72,7 +72,11 @@
             </ul>
             <div class="footer-hours">
               <strong>Business Hours</strong>
-              <p>Mon - Fri: 9:00 AM - 6:00 PM<br>Saturday: 10:00 AM - 4:00 PM</p>
+              <p>
+                Mon - Fri: 8:00 AM - 4:30 PM<br>
+                Saturday: 8:00 AM - 12:00 PM<br>
+                <span class="after-hours">Outside hours: <a href="tel:+265887136122">+265 887 13 61 22</a></span>
+              </p>
             </div>
           </div>
         </div>
@@ -299,6 +303,22 @@ export default {
   color: rgba(255, 255, 255, 0.7);
   font-size: 0.9rem;
   line-height: 1.6;
+}
+
+.after-hours {
+  display: inline-block;
+  margin-top: 6px;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 600;
+}
+
+.after-hours a {
+  color: #00c6ff;
+  text-decoration: none;
+}
+
+.after-hours a:hover {
+  text-decoration: underline;
 }
 
 .footer-bottom {

@@ -60,17 +60,24 @@
                 <label for="from">From *</label>
                 <div class="input-wrapper">
                   <i class="input-icon fas fa-map-marker-alt"></i>
-                  <select 
-                    id="from" 
-                    class="form-select" 
-                    v-model="form.from" 
+                  <input
+                    id="from"
+                    class="form-input datalist-input"
+                    list="departure-cities"
+                    v-model="form.from"
                     required
-                  >
-                    <option value="">Select departure city</option>
-                    <option v-for="city in cities" :key="city.code" :value="city.name">
+                    placeholder="Start typing departure city or code"
+                    aria-describedby="from-helper"
+                  />
+                  <datalist id="departure-cities">
+                    <option
+                      v-for="city in cities"
+                      :key="`from-${city.code}`"
+                      :value="`${city.name} (${city.code})`"
+                    >
                       {{ city.name }} ({{ city.code }})
                     </option>
-                  </select>
+                  </datalist>
                 </div>
               </div>
               
@@ -78,17 +85,24 @@
                 <label for="to">To *</label>
                 <div class="input-wrapper">
                   <i class="input-icon fas fa-plane"></i>
-                  <select 
-                    id="to" 
-                    class="form-select" 
-                    v-model="form.to" 
+                  <input
+                    id="to"
+                    class="form-input datalist-input"
+                    list="destination-cities"
+                    v-model="form.to"
                     required
-                  >
-                    <option value="">Select destination</option>
-                    <option v-for="city in cities" :key="city.code" :value="city.name">
+                    placeholder="Start typing destination city or code"
+                    aria-describedby="to-helper"
+                  />
+                  <datalist id="destination-cities">
+                    <option
+                      v-for="city in cities"
+                      :key="`to-${city.code}`"
+                      :value="`${city.name} (${city.code})`"
+                    >
                       {{ city.name }} ({{ city.code }})
                     </option>
-                  </select>
+                  </datalist>
                 </div>
               </div>
               
@@ -343,6 +357,7 @@
 
 <script>
 import emailjs from '@emailjs/browser'
+import { globalDestinations } from '../data/destinations'
 
 export default {
   name: 'FlightBookingForm',
@@ -369,36 +384,7 @@ export default {
         phone: '',
         notes: ''
       },
-      cities: [
-        { name: 'Dar es Salaam', code: 'DAR' },
-        { name: 'Tunis', code: 'TUN' },
-        { name: 'Algiers', code: 'ALG' },
-        { name: 'Kigali', code: 'KGL' },
-        { name: 'Dakar', code: 'DKR' },
-        { name: 'Abidjan', code: 'ABJ' },
-        { name: 'Kinshasa', code: 'FIH' },
-        { name: 'Luanda', code: 'LAD' },
-        { name: 'Khartoum', code: 'KRT' },
-        { name: 'Durban', code: 'DUR' },
-        { name: 'New York', code: 'NYC' },
-        { name: 'Los Angeles', code: 'LAX' },
-        { name: 'Chicago', code: 'ORD' },
-        { name: 'Miami', code: 'MIA' },
-        { name: 'San Francisco', code: 'SFO' },
-        { name: 'London', code: 'LHR' },
-        { name: 'Paris', code: 'CDG' },
-        { name: 'Tokyo', code: 'NRT' },
-        { name: 'Dubai', code: 'DXB' },
-        { name: 'Cairo', code: 'CAI' },
-        { name: 'Johannesburg', code: 'JNB' },
-        { name: 'Cape Town', code: 'CPT' },
-        { name: 'Lagos', code: 'LOS' },
-        { name: 'Nairobi', code: 'NBO' },
-        { name: 'Casablanca', code: 'CMN' },
-        { name: 'Addis Ababa', code: 'ADD' },
-        { name: 'Accra', code: 'ACC' },
-        { name: 'Marrakech', code: 'RAK' }
-      ],
+      cities: globalDestinations,
       minDate: tomorrow.toISOString().split('T')[0],
       isSubmitting: false,
       submitMessage: '',

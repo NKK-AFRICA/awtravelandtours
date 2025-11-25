@@ -24,7 +24,11 @@
               <h2>Send Us a Message</h2>
               <p>Fill out the form below and we'll get back to you as soon as possible</p>
             </div>
-            <form @submit.prevent="submitForm" class="contact-form">
+            <form @submit.prevent="submitForm" class="contact-form" novalidate>
+              <label class="honeypot">
+                Do not fill this out
+                <input type="text" v-model="form.botField" autocomplete="off" tabindex="-1">
+              </label>
               <div class="form-meta">
                 <div class="meta-item">
                   <span class="meta-label">Average response time</span>
@@ -63,10 +67,21 @@
                 <p class="privacy-note">
                   By sending this form you agree to our <router-link to="/privacy">privacy policy</router-link>.
                 </p>
-                <button class="btn-submit" type="submit">
-                  <span>Send Message</span>
-                  <i class="fas fa-arrow-right"></i>
+                <button class="btn-submit" type="submit" :disabled="isSubmitting">
+                  <template v-if="!isSubmitting">
+                    <span>Send Message</span>
+                    <i class="fas fa-arrow-right"></i>
+                  </template>
+                  <template v-else>
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <span>Sending...</span>
+                  </template>
                 </button>
+              </div>
+              <div v-if="feedback.message" class="form-alert" :class="feedback.type" aria-live="polite">
+                <i v-if="feedback.type === 'success'" class="fas fa-check-circle"></i>
+                <i v-else class="fas fa-exclamation-circle"></i>
+                <span>{{ feedback.message }}</span>
               </div>
             </form>
           </div>
@@ -129,21 +144,69 @@ export default {
         email: '',
         phone: '',
         subject: '',
-        message: ''
-      }
+        message: '',
+        botField: ''
+      },
+      isSubmitting: false,
+      feedback: {
+        message: '',
+        type: ''
+      },
+      formspreeEndpoint: 'https://formspree.io/f/xyzaljkd'
     }
   },
   methods: {
-    submitForm() {
-      // Form submission logic would go here
-      alert('Thank you for your message! We will get back to you soon.')
-      // Reset form
+    async submitForm() {
+      if (this.form.botField) {
+        return
+      }
+
+      this.isSubmitting = true
+      this.feedback = { message: '', type: '' }
+
+      try {
+        const response = await fetch(this.formspreeEndpoint, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json'
+          },
+          body: JSON.stringify({
+            name: this.form.name,
+            email: this.form.email,
+            phone: this.form.phone || 'Not provided',
+            subject: this.form.subject,
+            message: this.form.message
+          })
+        })
+
+        if (!response.ok) {
+          const errorData = await response.json().catch(() => ({}))
+          throw new Error(errorData.error || 'Unable to send your message right now.')
+        }
+
+        this.feedback = {
+          message: 'Thank you! Your message has been sent successfully.',
+          type: 'success'
+        }
+        this.resetForm()
+      } catch (error) {
+        this.feedback = {
+          message: error.message || 'Something went wrong. Please try again later or contact us directly.',
+          type: 'error'
+        }
+      } finally {
+        this.isSubmitting = false
+      }
+    },
+    resetForm() {
       this.form = {
         name: '',
         email: '',
         phone: '',
         subject: '',
-        message: ''
+        message: '',
+        botField: ''
       }
     }
   }
@@ -397,6 +460,44 @@ export default {
 .btn-submit:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 30px rgba(0, 102, 204, 0.4);
+}
+
+.btn-submit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+.form-alert {
+  margin-top: 24px;
+  padding: 16px 20px;
+  border-radius: 12px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid transparent;
+}
+
+.form-alert.success {
+  background: rgba(34, 197, 94, 0.12);
+  color: #0f6a3f;
+  border-color: rgba(34, 197, 94, 0.4);
+}
+
+.form-alert.error {
+  background: rgba(239, 68, 68, 0.12);
+  color: #861616;
+  border-color: rgba(239, 68, 68, 0.4);
+}
+
+.honeypot {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  height: 0;
+  width: 0;
 }
 
 .contact-info {
