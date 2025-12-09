@@ -2,7 +2,7 @@
   <footer class="main-footer">
     <div class="footer-top">
       <div class="uk-container">
-        <div class="uk-grid-match uk-child-width-1-4@m uk-child-width-1-2@s" uk-grid>
+        <div class="uk-child-width-1-4@m uk-child-width-1-2@s" uk-grid>
           <div class="footer-column">
             <div class="footer-logo">
               <i class="fas fa-globe"></i>

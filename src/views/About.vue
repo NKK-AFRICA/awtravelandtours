@@ -121,8 +121,8 @@
                 <img src="/image/289c72de3647d1.jpeg" alt="Team Member">
               </div>
               <h3>Daniel Kaliati</h3>
-              <span class="team-role">Mananging Director</span>
-              <p>With 20 years of travel industry experience, John founded AW Travel & Tours with a vision to make extraordinary travel accessible to everyone.</p>
+              <span class="team-role">Managing Director</span>
+              <p>With 20 years of travel industry experience, Daniel founded AW Travel & Tours with a vision to make extraordinary travel accessible to everyone.</p>
             </div>
           </div>
           <div>
@@ -132,7 +132,7 @@
               </div>
               <h3>Christina Mangwanya</h3>
               <span class="team-role">Travel Director</span>
-              <p>Sarah specializes in luxury travel and has curated experiences for high-profile clients across 40+ countries worldwide.</p>
+              <p>Christina specializes in luxury travel and has curated experiences for high-profile clients across 40+ countries worldwide.</p>
             </div>
           </div>
           <div>
