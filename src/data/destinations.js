@@ -122,3 +122,5 @@ export const globalDestinations = Object.freeze([
   { name: 'Zurich, Switzerland', code: 'ZRH' }
 ])
 
+
+

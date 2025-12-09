@@ -111,28 +111,37 @@
       <div class="uk-container">
         <div class="section-header">
           <span class="section-badge">Testimonials</span>
-          <h2 class="section-title">What Our Clients Say</h2>
-          <p class="section-subtitle">Real experiences from travelers who chose AW Travel & Tours</p>
+          <h2 class="section-title">What Are People Saying?</h2>
+          <p class="section-subtitle">Real stories from happy travelers who've booked with AW Travel & Tours.</p>
         </div>
-        <div class="testimonials-grid">
-          <div v-for="(testimonial, index) in testimonials" :key="index" class="testimonial-card" uk-scrollspy="cls: uk-animation-fade; delay: 100">
-            <div class="testimonial-quote">
-              <i class="fas fa-quote-right"></i>
-            </div>
-            <p class="testimonial-text">"{{ testimonial.text }}"</p>
-            <div class="testimonial-author">
-              <div class="author-avatar">
-                {{ testimonial.author.charAt(0) }}
-              </div>
-              <div class="author-info">
-                <strong>{{ testimonial.author }}</strong>
-                <span>{{ testimonial.location }}</span>
-              </div>
-            </div>
-            <div class="testimonial-rating">
-              <i class="fas fa-star" v-for="n in 5" :key="n"></i>
-            </div>
+        <div class="testimonials-slider-wrapper" uk-slider="autoplay: true; autoplay-interval: 4000; pause-on-hover: true">
+          <div class="uk-position-relative uk-visible-toggle">
+            <ul class="uk-slider-items uk-grid uk-grid-medium uk-child-width-1-1 uk-child-width-1-2@s uk-child-width-1-3@m">
+              <li v-for="(testimonial, index) in testimonials" :key="index">
+                <div class="testimonial-card">
+                  <div class="testimonial-quote">
+                    <i class="fas fa-quote-right"></i>
+                  </div>
+                  <p class="testimonial-text">"{{ testimonial.text }}"</p>
+                  <div class="testimonial-author">
+                    <div class="author-avatar">
+                      {{ testimonial.author.charAt(0) }}
+                    </div>
+                    <div class="author-info">
+                      <strong>{{ testimonial.author }}</strong>
+                      <span>{{ testimonial.location }}</span>
+                    </div>
+                  </div>
+                  <div class="testimonial-rating">
+                    <i class="fas fa-star" v-for="n in 5" :key="n"></i>
+                  </div>
+                </div>
+              </li>
+            </ul>
+            <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
+            <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slider-item="next"></a>
           </div>
+          <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin-medium-top"></ul>
         </div>
       </div>
     </section>
@@ -180,43 +189,67 @@ export default {
     return {
       services: [
         {
-          title: 'Custom Tour Packages',
-          description: 'Tailored travel experiences designed just for you. Explore destinations at your own pace with our personalized tour packages.',
-          image: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800&auto=format&fit=crop',
-          icon: 'world',
-          features: ['Personalized itineraries', 'Flexible scheduling', 'Expert guidance'],
+          title: 'Air Tickets',
+          description: 'Expert booking and management of all your air travel needs. We provide competitive rates and reliable service for all your flight requirements.',
+          image: 'image/services/air-tickets.jpg',
+          icon: 'plane',
+          features: ['Best prices', 'Multiple airlines', '24/7 support'],
           badge: 'Popular'
         },
         {
-          title: 'Group Travel',
-          description: 'Join exciting group tours and meet like-minded travelers. Perfect for those who enjoy sharing experiences with others.',
-          image: 'https://images.unsplash.com/photo-1504593811423-6dd665756598?w=800&auto=format&fit=crop',
-          icon: 'users',
-          features: ['Small group sizes', 'Shared experiences', 'Better prices']
+          title: 'Hotel Accommodation',
+          description: 'Access to the best accommodations worldwide at competitive rates. From budget-friendly to luxury stays, we have options for every traveler.',
+          image: 'image/services/hotel-accommodation.jpg',
+          icon: 'hotel',
+          features: ['Best rates', 'Verified properties', 'Flexible bookings']
         },
         {
-          title: 'Adventure Tours',
-          description: 'Thrill-seeking adventures for the adventurous soul. From mountain climbing to scuba diving, we have it all.',
-          image: 'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=800&auto=format&fit=crop',
-          icon: 'bolt',
-          features: ['Extreme sports', 'Unique activities', 'Safety first']
+          title: 'Visa Process',
+          description: 'Expert guidance and documentation support for all visa requirements. We simplify the visa application process to make your travel planning stress-free.',
+          image: 'image/services/visa-process.jpg',
+          icon: 'file-invoice',
+          features: ['Documentation help', 'Application support', 'Fast processing']
+        },
+        {
+          title: 'Travel Insurance',
+          description: 'Comprehensive coverage options to protect your journey. Travel with peace of mind knowing you\'re covered for unexpected situations.',
+          image: 'image/services/travel-insurance.jpg',
+          icon: 'shield-alt',
+          features: ['Full coverage', 'Emergency support', 'Affordable rates']
+        },
+        {
+          title: 'Travel Tours',
+          description: 'Tailored travel experiences designed to immerse you in local culture. Our tours help you feel the authentic essence of your destination.',
+          image: 'image/services/travel-tours.jpg',
+          icon: 'map-marked-alt',
+          features: ['Cultural immersion', 'Local experiences', 'Expert guides']
         }
       ],
       testimonials: [
         {
-          text: 'Amazing experience! The team at AW Travel & Tours made our honeymoon absolutely perfect. Every detail was taken care of, and we felt so well taken care of throughout the entire trip.',
-          author: 'Sarah & John',
-          location: 'New York, USA'
+          text: 'AW Travel made booking my honeymoon to Zanzibar so simple and affordable. Highly recommend their service!',
+          author: 'Emily Banda',
+          location: 'Blantyre, Malawi'
         },
         {
-          text: 'Professional service and incredible destinations. Will definitely book with them again! The attention to detail and personalized recommendations were outstanding.',
-          author: 'Michael Chen',
-          location: 'London, UK'
+          text: 'From flight tickets to visa help, AW handled it all. Their team is professional and fast.',
+          author: 'Franklin Nyirenda',
+          location: 'Lilongwe, Malawi'
         },
         {
-          text: 'They truly understand what makes a memorable trip. Highly recommend their services! From planning to execution, everything was flawless.',
-          author: 'Emma Wilson',
-          location: 'Sydney, Australia'
+          text: 'I got stuck with airline changes, and they helped me check in again without stress. Real lifesavers!',
+          author: 'Grace Mbewe',
+          location: 'Mzuzu, Malawi'
+        },
+        {
+          text: 'From flight tickets to visa help, AW handled it all. Their team is professional and fast.',
+          author: 'John Phiri',
+          location: 'Lilongwe, Malawi'
+        },
+        {
+          text: 'I got stuck with airline changes, and they helped me check in again without stress. Real lifesavers!',
+          author: 'James Mbewe',
+          location: 'Mzuzu, Malawi'
         }
       ]
     }
@@ -416,25 +449,16 @@ export default {
   background: #fafbfc;
 }
 
-.testimonials-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 30px;
+.testimonials-slider-wrapper {
   margin-top: 60px;
 }
 
-@media (min-width: 768px) {
-  .testimonials-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
-  }
+.testimonials-slider-wrapper .uk-slider-items {
+  margin: 0;
 }
 
-@media (min-width: 960px) {
-  .testimonials-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-  }
+.testimonials-slider-wrapper .uk-slider-items > li {
+  padding: 0 15px;
 }
 
 .testimonial-card {

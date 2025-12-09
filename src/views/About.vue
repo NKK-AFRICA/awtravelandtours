@@ -20,10 +20,14 @@
       <div class="uk-container">
         <div class="uk-grid-match uk-child-width-1-2@m" uk-grid>
           <div class="about-content">
-            <span class="section-badge">Our Story</span>
-            <h2>Creating Memories Since 2008</h2>
-            <p class="intro-text">At AW Travel & Tours, we believe that travel is more than just visiting places—it's about creating memories that last a lifetime. With over 15 years of experience in the travel industry, we've helped thousands of travelers explore the world with confidence and joy.</p>
-            <p>Our team of travel experts is dedicated to crafting personalized itineraries that match your interests, budget, and travel style. Whether you're seeking adventure, relaxation, cultural immersion, or a combination of all three, we're here to make it happen.</p>
+            <span class="section-badge">About Us</span>
+            <h2>A.W. Travels and Tours.</h2>
+            <p class="intro-text">AW Travel and Tours is a travel agency specializing in air tickets, hotel accommodation, visa procedures, travel insurance, and travel tours. The company was established in October 2021 and has staff with extensive knowledge of travel-related concerns. It is wholly owned by Malawians.</p>
+            <div class="about-tagline">
+              <hr class="tagline-separator">
+              <p class="tagline-text">Trusted and Reliable</p>
+            </div>
+            <p>Please get in touch if you would like to know more about our tours and pricing.</p>
             <div class="about-stats">
               <div class="about-stat">
                 <div class="about-stat-number">20+</div>
@@ -270,6 +274,51 @@ export default {
   color: #666;
   line-height: 1.8;
   margin-bottom: 20px;
+}
+
+.about-tagline {
+  margin: 30px 0;
+}
+
+.tagline-separator {
+  border: none;
+  border-top: 2px solid #0066cc;
+  width: 60px;
+  margin: 0 0 15px 0;
+}
+
+.tagline-text {
+  font-size: 1.1rem;
+  color: #0066cc;
+  font-weight: 600;
+  margin: 0;
+}
+
+.team-intro {
+  max-width: 800px;
+  margin: 0 auto 40px;
+  text-align: center;
+}
+
+.team-intro p {
+  font-size: 1.1rem;
+  color: #666;
+  line-height: 1.8;
+}
+
+.team-tagline {
+  text-align: center;
+  margin-top: 40px;
+  padding-top: 40px;
+  border-top: 1px solid #eee;
+}
+
+.team-tagline p {
+  font-size: 1.2rem;
+  color: #0066cc;
+  font-weight: 600;
+  font-style: italic;
+  margin: 0;
 }
 
 .about-content p {

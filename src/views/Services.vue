@@ -37,14 +37,28 @@
       <div class="uk-container">
         <div class="uk-grid-match uk-child-width-1-2@m" uk-grid>
           <div class="features-content">
-            <span class="section-badge">Additional Services</span>
-            <h2>Complete Travel Solutions</h2>
-            <p class="features-description">Beyond our core services, we offer comprehensive travel support to ensure every aspect of your journey is seamless and stress-free.</p>
+            <span class="section-badge">Core Business</span>
+            <h2>Our Main Purpose</h2>
+            <p class="features-description">Our main purpose is to support travelers and make them feel the local culture.</p>
             <ul class="features-list">
               <li>
                 <i class="fas fa-check check-icon"></i>
                 <div>
-                  <strong>Visa Assistance</strong>
+                  <strong>Air Tickets</strong>
+                  <p>Expert booking and management of all your air travel needs</p>
+                </div>
+              </li>
+              <li>
+                <i class="fas fa-check check-icon"></i>
+                <div>
+                  <strong>Hotel Accommodation</strong>
+                  <p>Access to the best accommodations worldwide at competitive rates</p>
+                </div>
+              </li>
+              <li>
+                <i class="fas fa-check check-icon"></i>
+                <div>
+                  <strong>Visa Process</strong>
                   <p>Expert guidance and documentation support for all visa requirements</p>
                 </div>
               </li>
@@ -58,32 +72,15 @@
               <li>
                 <i class="fas fa-check check-icon"></i>
                 <div>
-                  <strong>Airport Transfers</strong>
-                  <p>Reliable transportation services for a smooth start to your trip</p>
-                </div>
-              </li>
-              <li>
-                <i class="fas fa-check check-icon"></i>
-                <div>
-                  <strong>Hotel Bookings</strong>
-                  <p>Access to the best accommodations worldwide at competitive rates</p>
-                </div>
-              </li>
-              <li>
-                <i class="fas fa-check check-icon"></i>
-                <div>
-                  <strong>Flight Reservations</strong>
-                  <p>Expert booking and management of all your air travel needs</p>
-                </div>
-              </li>
-              <li>
-                <i class="fas fa-check check-icon"></i>
-                <div>
-                  <strong>24/7 Support</strong>
-                  <p>Round-the-clock assistance during your entire travel experience</p>
+                  <strong>Travel Tours</strong>
+                  <p>Tailored travel experiences designed to immerse you in local culture</p>
                 </div>
               </li>
             </ul>
+            <div class="core-business-tagline">
+              <hr class="tagline-separator">
+              <p class="tagline-text">travel satisfaction guaranteed</p>
+            </div>
           </div>
           <div class="features-card">
             <div class="features-card-content">
@@ -135,47 +132,40 @@ export default {
     return {
       allServices: [
         {
-          title: 'Custom Tour Packages',
-          description: 'Tailored travel experiences designed just for you. Explore destinations at your own pace with our personalized tour packages that match your interests and budget.',
-          image: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800&auto=format&fit=crop',
-          icon: 'world',
-          features: ['Personalized itineraries', 'Flexible scheduling', 'Expert guidance'],
+          title: 'Air Tickets',
+          description: 'Expert booking and management of all your air travel needs. We provide competitive rates and reliable service for all your flight requirements.',
+          image: 'image/services/air-tickets.jpg',
+          icon: 'plane',
+          features: ['Best prices', 'Multiple airlines', '24/7 support'],
           badge: 'Popular'
         },
         {
-          title: 'Group Travel',
-          description: 'Join exciting group tours and meet like-minded travelers. Perfect for those who enjoy sharing experiences with others while exploring new destinations.',
-          image: 'https://images.unsplash.com/photo-1504593811423-6dd665756598?w=800&auto=format&fit=crop',
-          icon: 'users',
-          features: ['Small group sizes', 'Shared experiences', 'Better prices']
+          title: 'Hotel Accommodation',
+          description: 'Access to the best accommodations worldwide at competitive rates. From budget-friendly to luxury stays, we have options for every traveler.',
+          image: 'image/services/hotel-accommodation.jpg',
+          icon: 'hotel',
+          features: ['Best rates', 'Verified properties', 'Flexible bookings']
         },
         {
-          title: 'Adventure Tours',
-          description: 'Thrill-seeking adventures for the adventurous soul. From mountain climbing to scuba diving, we organize adrenaline-pumping experiences.',
-          image: 'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=800&auto=format&fit=crop',
-          icon: 'bolt',
-          features: ['Extreme sports', 'Unique activities', 'Safety first']
+          title: 'Visa Process',
+          description: 'Expert guidance and documentation support for all visa requirements. We simplify the visa application process to make your travel planning stress-free.',
+          image: 'image/services/visa-process.jpg',
+          icon: 'file-invoice',
+          features: ['Documentation help', 'Application support', 'Fast processing']
         },
         {
-          title: 'Luxury Travel',
-          description: 'Indulge in the finest accommodations, exclusive experiences, and personalized service with our luxury travel packages.',
-          image: 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&auto=format&fit=crop',
-          icon: 'star',
-          features: ['5-star accommodations', 'VIP services', 'Exclusive access']
+          title: 'Travel Insurance',
+          description: 'Comprehensive coverage options to protect your journey. Travel with peace of mind knowing you\'re covered for unexpected situations.',
+          image: 'image/services/travel-insurance.jpg',
+          icon: 'shield-alt',
+          features: ['Full coverage', 'Emergency support', 'Affordable rates']
         },
         {
-          title: 'Family Vacations',
-          description: 'Family-friendly destinations and activities designed to create lasting memories for every member of your family.',
-          image: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=800&auto=format&fit=crop',
-          icon: 'heart',
-          features: ['Kid-friendly activities', 'Safe environments', 'Fun for all ages']
-        },
-        {
-          title: 'Business Travel',
-          description: 'Efficient and professional travel arrangements for your business needs. From corporate retreats to conference travel.',
-          image: 'https://images.unsplash.com/photo-1543269664-56d93c1b41a6?w=800&auto=format&fit=crop',
-          icon: 'briefcase',
-          features: ['Efficient planning', 'Professional service', 'Flexible options']
+          title: 'Travel Tours',
+          description: 'Tailored travel experiences designed to immerse you in local culture. Our tours help you feel the authentic essence of your destination.',
+          image: 'image/services/travel-tours.jpg',
+          icon: 'map-marked-alt',
+          features: ['Cultural immersion', 'Local experiences', 'Expert guides']
         }
       ]
     }
@@ -448,6 +438,27 @@ export default {
   color: #666;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+}
+
+.core-business-tagline {
+  margin-top: 40px;
+  padding-top: 30px;
+  border-top: 1px solid #eee;
+}
+
+.tagline-separator {
+  border: none;
+  border-top: 2px solid #0066cc;
+  width: 60px;
+  margin: 0 0 15px 0;
+}
+
+.tagline-text {
+  font-size: 1.1rem;
+  color: #0066cc;
+  font-weight: 600;
+  margin: 0;
+  text-transform: lowercase;
 }
 
 .btn-primary {

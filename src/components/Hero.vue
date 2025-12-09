@@ -4,30 +4,16 @@
     <div class="hero-overlay"></div>
     <div class="uk-container uk-position-relative hero-content">
       <div class="hero-content-wrapper">
-        <div class="hero-badge" uk-scrollspy="cls: uk-animation-fade; delay: 100">
-          <i class="fas fa-star"></i>
-          <span>Trusted by 10,000+ Travelers</span>
-        </div>
+        <h2 class="hero-subheading" uk-scrollspy="cls: uk-animation-fade; delay: 100">
+          Your Reliable & Trusted Travel Partner
+        </h2>
         <h1 class="hero-title" uk-scrollspy="cls: uk-animation-slide-top-small; delay: 200">
-          Discover Your Next
-          <span class="highlight">Adventure</span>
+          Explore Your Dream Destination
         </h1>
-        <p class="hero-subtitle" uk-scrollspy="cls: uk-animation-slide-top-small; delay: 300">
-          Experience the world's most stunning destinations with expertly crafted tours. 
-          From exotic beaches to mountain peaks, we make your travel dreams a reality.
-        </p>
-        <div class="hero-cta" uk-scrollspy="cls: uk-animation-slide-top-small; delay: 400">
-          <router-link to="/services" class="btn btn-secondary">
-            <i class="fas fa-globe"></i>
-            <span>Explore Destinations</span>
-          </router-link>
-          <a href="#flight-booking" class="btn btn-primary" @click.prevent="scrollToBooking">
-            <i class="fas fa-plane"></i>
-            <span>Book Your Flight</span>
-          </a>
-          <router-link to="/contact" class="btn btn-secondary">
-            <i class="fas fa-file-invoice"></i>
-            <span>Visa & Travel Insurance</span>
+        <div class="hero-cta" uk-scrollspy="cls: uk-animation-slide-top-small; delay: 300">
+          <router-link to="/contact" class="btn btn-primary">
+            <i class="fas fa-calendar-check"></i>
+            <span>Book a Free Consultation</span>
           </router-link>
         </div>
       </div>
@@ -105,22 +91,14 @@ export default {
   color: white;
 }
 
-.hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(10px);
-  padding: 10px 20px;
-  border-radius: 50px;
-  font-size: 0.95rem;
-  margin-bottom: 40px;
-  font-weight: 500;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.hero-badge i {
-  font-size: 0.9rem;
+.hero-subheading {
+  font-family: 'Raleway', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  letter-spacing: 0.05em;
+  color: rgba(255, 255, 255, 0.9);
+  text-transform: uppercase;
 }
 
 .hero-title {
@@ -128,28 +106,9 @@ export default {
   font-size: 4.5rem;
   font-weight: 800;
   line-height: 1.15;
-  margin-bottom: 30px;
+  margin-bottom: 50px;
   letter-spacing: 0.02em;
   color: white;
-}
-
-.hero-title .highlight {
-  background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  display: block;
-}
-
-.hero-subtitle {
-  font-size: 1.4rem;
-  line-height: 1.8;
-  margin-bottom: 50px;
-  color: rgba(255, 255, 255, 0.95);
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
-  font-weight: 400;
 }
 
 .hero-cta {
@@ -254,10 +213,6 @@ export default {
     font-size: 3rem;
   }
   
-  .hero-subtitle {
-    font-size: 1.2rem;
-  }
-  
   .hero-cta {
     flex-direction: column;
     gap: 16px;
@@ -284,15 +239,9 @@ export default {
     font-size: 2.2rem;
   }
   
-  .hero-subtitle {
-    font-size: 1.1rem;
-    margin-bottom: 40px;
-  }
-  
-  .hero-badge {
-    font-size: 0.85rem;
-    padding: 8px 16px;
-    margin-bottom: 30px;
+  .hero-subheading {
+    font-size: 1rem;
+    margin-bottom: 20px;
   }
   
   .btn {
