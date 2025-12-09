@@ -37,20 +37,19 @@
               <li><router-link to="/about">About Us</router-link></li>
               <li><router-link to="/services">Our Services</router-link></li>
               <li><router-link to="/contact">Contact</router-link></li>
-              <li><a href="/services">Travel Packages</a></li>
-              <li><a href="#flight-booking" @click="scrollToBooking">Book A Flight</a></li>
+              <li><router-link to="/services">Travel Packages</router-link></li>
+              <li><a href="#" @click.prevent="scrollToBooking">Book A Flight</a></li>
             </ul>
           </div>
           
           <div class="footer-column">
             <h4 class="footer-title">Services</h4>
             <ul class="footer-links">
-              <li><a href="/services">Custom Tours</a></li>
-              <li><a href="/services">Group Travel</a></li>
-              <li><a href="/services">Adventure Tours</a></li>
-              <li><a href="/services">Luxury Travel</a></li>
-              <li><a href="/services">Family Vacations</a></li>
-              <li><a href="/services">Business Travel</a></li>
+              <li><router-link to="/services">Air Tickets</router-link></li>
+              <li><router-link to="/services">Hotel Accommodation</router-link></li>
+              <li><router-link to="/services">Visa Process</router-link></li>
+              <li><router-link to="/services">Travel Insurance</router-link></li>
+              <li><router-link to="/services">Travel Tours</router-link></li>
             </ul>
           </div>
           
