@@ -140,9 +140,9 @@
               <div class="team-avatar">
                 <img src="https://cdn.pixabay.com/photo/2018/04/18/18/56/user-3331257_1280.png" alt="Team Member">
               </div>
-              <h3>Michael Chen</h3>
+              <h3>Patience Chobowan</h3>
               <span class="team-role">Adventure Specialist</span>
-              <p>Michael is an adventure enthusiast who designs thrilling experiences for travelers seeking adrenaline-pumping activities.</p>
+              <p>Patience is an adventure enthusiast who designs thrilling experiences for travelers seeking adrenaline-pumping activities.</p>
             </div>
           </div>
         </div>
