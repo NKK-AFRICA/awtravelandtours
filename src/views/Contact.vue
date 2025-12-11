@@ -152,7 +152,7 @@ export default {
         message: '',
         type: ''
       },
-      formspreeEndpoint: 'https://formspree.io/f/xyzaljkd'
+      formspreeEndpoint: 'https://formspree.io/f/mdkqwrpk'
     }
   },
   methods: {
