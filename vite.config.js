@@ -18,7 +18,7 @@ export default defineConfig({
       }
     }
   ],
-  base: '/awtravelandtours/',
+  base: '/',
 })
 
 
