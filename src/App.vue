@@ -1,17 +1,34 @@
 <template>
   <div id="app">
-    <router-view />
-    <WhatsAppChat />
+    <Preloader v-if="isLoading" />
+    <div v-else>
+      <router-view />
+      <WhatsAppChat />
+    </div>
   </div>
 </template>
 
 <script>
 import WhatsAppChat from './components/WhatsAppChat.vue'
+import Preloader from './components/Preloader.vue'
 
 export default {
   name: 'App',
   components: {
-    WhatsAppChat
+    WhatsAppChat,
+    Preloader
+  },
+  data() {
+    return {
+      isLoading: true
+    }
+  },
+  mounted() {
+    // Simulate loading time for a better user experience
+    // In a real app, you might wait for data fetching, assets loading, etc.
+    setTimeout(() => {
+      this.isLoading = false
+    }, 2000)
   }
 }
 </script>
