@@ -5,11 +5,7 @@
         <div class="uk-child-width-1-4@m uk-child-width-1-2@s" uk-grid>
           <div class="footer-column">
             <div class="footer-logo">
-              <i class="fas fa-globe"></i>
-              <div class="footer-logo-text">
-                <strong>AW Travel</strong>
-                <span>& Tours</span>
-              </div>
+              <img src="/logo.png" alt="AW Travel & Tours" class="footer-logo-image" />
             </div>
             <p class="footer-description">
               Your trusted partner for unforgettable travel experiences. We specialize in creating memorable journeys tailored to your dreams and desires.
@@ -144,33 +140,12 @@ export default {
 }
 
 .footer-logo {
-  display: flex;
-  align-items: center;
-  gap: 12px;
   margin-bottom: 24px;
-  color: white;
 }
 
-.footer-logo i {
-  color: #0066cc;
-  font-size: 2rem;
-}
-
-.footer-logo-text {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.2;
-}
-
-.footer-logo-text strong {
-  font-size: 1.4rem;
-  color: white;
-  font-weight: 700;
-}
-
-.footer-logo-text span {
-  font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.7);
+.footer-logo-image {
+  height: 60px;
+  width: auto;
 }
 
 .footer-description {

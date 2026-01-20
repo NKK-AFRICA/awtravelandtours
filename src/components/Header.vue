@@ -3,15 +3,7 @@
     <div class="nav-container">
       <nav class="navbar">
         <router-link to="/" class="logo-wrapper">
-          <div class="logo">
-            <div class="logo-icon-wrapper">
-              <i class="logo-icon fas fa-globe"></i>
-            </div>
-            <div class="logo-text">
-              <strong class="logo-name">AW Travel</strong>
-              <span class="logo-tagline">& Tours</span>
-            </div>
-          </div>
+          <img src="/logo.png" alt="AW Travel & Tours" class="logo-image" />
         </router-link>
         
         <ul class="nav-menu" :class="{ 'nav-menu-active': mobileMenuOpen }">
@@ -184,59 +176,16 @@ export default {
   transform: translateY(-2px);
 }
 
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-
-.logo-icon-wrapper {
-  width: 48px;
+.logo-image {
   height: 48px;
-  background: linear-gradient(135deg, #0066cc 0%, #004499 100%);
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 15px rgba(0, 102, 204, 0.25);
-  transition: all 0.3s ease;
+  width: auto;
+  transition: transform 0.3s ease;
+  filter: drop-shadow(0 4px 15px rgba(0, 102, 204, 0.25));
 }
 
-.logo-wrapper:hover .logo-icon-wrapper {
-  transform: rotate(5deg) scale(1.05);
-  box-shadow: 0 6px 20px rgba(0, 102, 204, 0.35);
-}
-
-.logo-icon {
-  color: white;
-  font-size: 1.4rem;
-}
-
-.logo-text {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.2;
-}
-
-.logo-name {
-  font-family: 'Raleway', sans-serif;
-  font-size: 1.5rem;
-  color: #1a1a1a;
-  font-weight: 800;
-  letter-spacing: 0.02em;
-  background: linear-gradient(135deg, #1a1a1a 0%, #0066cc 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.logo-tagline {
-  font-size: 0.75rem;
-  color: #666;
-  font-weight: 500;
-  margin-top: -2px;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
+.logo-wrapper:hover .logo-image {
+  transform: scale(1.05);
+  filter: drop-shadow(0 6px 20px rgba(0, 102, 204, 0.35));
 }
 
 .nav-menu {
@@ -383,21 +332,8 @@ export default {
     height: 70px;
   }
 
-  .logo-icon-wrapper {
-    width: 42px;
+  .logo-image {
     height: 42px;
-  }
-
-  .logo-icon {
-    font-size: 1.2rem;
-  }
-
-  .logo-name {
-    font-size: 1.3rem;
-  }
-
-  .logo-tagline {
-    font-size: 0.7rem;
   }
 
   .mobile-toggle {
@@ -458,21 +394,8 @@ export default {
     gap: 10px;
   }
 
-  .logo-icon-wrapper {
-    width: 38px;
+  .logo-image {
     height: 38px;
-  }
-
-  .logo-icon {
-    font-size: 1.1rem;
-  }
-
-  .logo-name {
-    font-size: 1.2rem;
-  }
-
-  .logo-tagline {
-    font-size: 0.65rem;
   }
 
   .nav-menu {
