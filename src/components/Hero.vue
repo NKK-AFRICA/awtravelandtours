@@ -29,7 +29,7 @@ export default {
   name: 'Hero',
   data() {
     return {
-      heroImage: 'image/e50aad4ee8421.jpeg'
+      heroImage: 'image/bdea409f7f204.jpeg'
     }
   },
   methods: {
